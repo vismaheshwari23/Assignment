@@ -1,0 +1,131 @@
+.course-list-container {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.course-list-wrapper {
+  flex: 1;
+  display: flex;
+  position: absolute;
+  top: 187px;
+  left: 140px;
+  flex-direction: column;
+  justify-content: space-between;
+  width: calc(75% - 280px);
+  max-width: 1640px;
+  box-sizing: border-box;
+}
+
+.course-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 16px;
+}
+
+.course-list.blurred {
+  filter: blur(5px);
+}
+
+.course-top-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.course-heading {
+  font: normal normal 600 20px/24px Montserrat;
+  color: #0F1317;
+  opacity: 1;
+}
+
+.course-select-box {
+  width: 182px;
+  height: 40px;
+  background: transparent;
+  opacity: 1;
+  font: normal normal 400 16px/20px Montserrat;
+  color: #0F1317;
+  outline: none;
+}
+
+.pagination {
+  display: flex;
+  justify-content: start;
+  margin-top: 20px;
+  height: 50px;
+}
+
+.pagination button {
+  padding: 10px 15px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 25%;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #FF6738;
+  color: white;
+}
+
+.pagination button:hover:not(.active) {
+  background-color: #ddd;
+}
+
+.popup {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0px 3px 6px #00000029;
+  opacity: 0.9;
+  z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .course-list-wrapper {
+    top: 300px;
+    left: 20px;
+    width: calc(100% - 40px);
+  }
+
+  .course-heading {
+    font-size: 18px;
+  }
+
+  .course-select-box {
+    width: 150px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .course-list-wrapper {
+    top: 200px;
+    left: 10px;
+    width: calc(100% - 20px);
+  }
+
+  .course-heading {
+    font-size: 16px;
+  }
+
+  .course-select-box {
+    width: 120px;
+    font-size: 12px;
+  }
+
+  .pagination {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pagination button {
+    margin: 5px 0;
+  }
+}

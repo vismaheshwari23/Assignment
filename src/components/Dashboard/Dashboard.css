@@ -1,0 +1,61 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 76px;
+  left: 140px;
+  width: calc(100% - 280px); 
+  max-width: 1640px; 
+  height: 111px;
+  background: #0F1317;
+  border-radius: 4px;
+  opacity: 1;
+  box-sizing: border-box; 
+}
+
+.dashboard-box {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.dashboard-text {
+  width: 20%;
+  align-self: center;
+  text-align: left;
+  margin-left: 10px;
+  font: normal normal 600 20px/24px Montserrat;
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  opacity: 1;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .dashboard-container {
+    width: calc(100% - 20px); /* Adjust width for smaller screens */
+    margin-left: 10px; /* Adjust left margin for smaller screens */
+    top: 50px; /* Adjust top position for smaller screens */
+  }
+
+  .dashboard-text {
+    font-size: 16px; /* Adjust font size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-container {
+    width: 100%; /* Full width for very small screens */
+    left: 0; /* Center the container */
+    top: 40px; /* Adjust top position for very small screens */
+    padding: 0 10px; /* Add padding for spacing */
+  }
+
+  .dashboard-text {
+    font-size: 14px; /* Adjust font size for very small screens */
+    margin-left: 0; /* Remove left margin for very small screens */
+    text-align: center; /* Center text for very small screens */
+  }
+}
