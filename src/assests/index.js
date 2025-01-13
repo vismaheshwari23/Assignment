@@ -11,4 +11,5 @@ import PopupHeader from './Path 33.svg';
 import PopupCircle from './Path 39 (1).svg';
 import PaginationArrow from './Path 58.svg';
 import PaginationArrow2 from './Path 59.svg';
-export { HashedlnLogo, ProfileLogo, shopingCart, ReactLogo, WishListLogo, WishListLogoActive, ArrowLogo, SearchIcon, GoToCheckOut,PopupHeader,PopupCircle,PaginationArrow,PaginationArrow2 }
+import DeleteIcon from './noun_Delete_3715928.svg';
+export { HashedlnLogo, ProfileLogo, shopingCart, ReactLogo, WishListLogo, WishListLogoActive, ArrowLogo, SearchIcon, GoToCheckOut, PopupHeader, PopupCircle, PaginationArrow, PaginationArrow2, DeleteIcon }

@@ -1,8 +1,8 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './CourseCard.css';
-import { ArrowLogo, WishListLogo, WishListLogoActive } from '../../assests';
-import { useWishlistContext } from '../../context/WishlistContext.tsx';
+import { ArrowLogo, DeleteIcon, WishListLogo, WishListLogoActive } from '../../assests';
+import { useWishlistContext } from '../../context/WishlistContext';
 
 interface Course {
   id: number;
@@ -19,6 +19,7 @@ interface CourseCardProps {
 
 const CourseCard: React.FC<CourseCardProps> = ({ course, addToCart }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { wishlistItems, toggleWishlistItem } = useWishlistContext();
 
   const navigateToCourseDetails = (id: number) => {
@@ -39,26 +40,33 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, addToCart }) => {
           </div>
         </div>
         <p className="educator">{course.educator}</p>
-        <button className="add-to-wishlist" onClick={() => toggleWishlistItem(course)}>
-          {isCourseInWishlist ? (
-            <img src={WishListLogoActive} alt="added to wishlist" />
-          ) : (
-            <img src={WishListLogo} alt="add to wishlist" />
-          )}
-        </button>
+        {location.pathname !== '/wishlist' && (
+          <button className="add-to-wishlist" onClick={() => toggleWishlistItem(course)}>
+            {isCourseInWishlist ? (
+              <img src={WishListLogoActive} alt="added to wishlist" />
+            ) : (
+              <img src={WishListLogo} alt="add to wishlist" />
+            )}
+          </button>
+        )}
         <p>
-          Price: {course.discountedPrice ? (
-            <>
-              Rs <s>{course.price}</s> {course.discountedPrice}/-
-            </>
+          {course.discountedPrice ? (
+            <div className="price">
+              <strong>Rs{course.discountedPrice}/-</strong><s>Rs{course.price}/-</s>
+            </div>
           ) : (
-            <>Rs {course.price}/-</>
+            <div className="price">Rs{course.price}/- <s>{" - "}</s></div>
           )}
         </p>
       </div>
       <div className="actions">
         <button onClick={() => addToCart(course)}>Add to Cart</button>
       </div>
+      {location.pathname === '/wishlist' && (
+        <button className="removeWishlist" onClick={() => toggleWishlistItem(course)}>
+          <img src={DeleteIcon} alt="remove-wishlist" />
+        </button>
+      )}
       <button className='navigate-arrow' onClick={() => navigateToCourseDetails(course.id)}>
         <img src={ArrowLogo} alt="navigate" />
       </button>

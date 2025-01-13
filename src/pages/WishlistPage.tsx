@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import CourseList from '../components/CourseList/CourseList';
 
 function WishlistPage() {
   return (
-    <div>WishlistPagedsakjfklsdjfksjdl</div>
+    <div>
+      <CourseList/>
+    </div>
   )
 }
 

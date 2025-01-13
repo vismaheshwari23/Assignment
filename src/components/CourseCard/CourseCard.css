@@ -13,7 +13,7 @@
   display: flex;
   flex-direction: row; 
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   box-sizing: border-box; 
 }
 
@@ -24,42 +24,49 @@
   text-align: center;
 }
 
-
 .course-card .course-info p {
   font-weight: bold;
 }
 
 .course-card h2 {
-  font-size: 1.2em;
+  font-size: 1.0em;
   margin: 0 16px 0 0;
 }
-.course-title{
+
+.course-title {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding-left: 5px;
 }
-.course-title-button{
+
+.course-title-button {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .course-card .educator {
-  font-size: 1em;
+  font-size: 0.7em;
+  font-weight: 100;
   margin: 0 20px;
-  color: #555;
+  color: #00000029;
 }
 
 .course-card p {
-  font-size: 1em;
+  font-size: 0.8em;
   margin: 0 16px 0 0;
 }
 
 .course-card s {
   color: #888;
+  font-weight: 400;
 }
 
 .course-card .actions {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .course-card button {
@@ -91,6 +98,17 @@
 .navigate-arrow {
   background: transparent !important;
   opacity: 1;
+}
+
+.removeWishlist {
+  background-color: transparent !important;
+}
+.price{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 90px;
 }
 
 @media (max-width: 768px) {
@@ -156,3 +174,4 @@
     margin: 4px 0; 
   }
 }
+

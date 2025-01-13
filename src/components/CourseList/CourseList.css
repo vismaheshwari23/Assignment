@@ -87,6 +87,17 @@
   z-index: 1000;
 }
 
+.wishlist-item {
+  text-align: left;
+  font: italic normal medium 24px/28px Montserrat !important;
+  color: #AAAAAA;
+  line-height: 200px;
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 768px) {
   .course-list-wrapper {
     top: 300px;

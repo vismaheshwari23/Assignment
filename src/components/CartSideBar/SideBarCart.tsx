@@ -1,38 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './SideBarCart.css';
 import { GoToCheckOut } from '../../assests';
-import { useCartContext } from '../../context/CartContext.tsx';
-import InputBox from '../InputBox/InputBox.tsx';
-import { useNavigate } from 'react-router-dom';
-
-const CartSideBar: React.FC = () => {
+import { useCartContext } from '../../context/CartContext';
+import InputBox from '../InputBox/InputBox';
+import { useNavigate, useLocation } from 'react-router-dom';
+interface CartSideBarProps {
+  handleSearch: (searchTerm: string) => void;
+}
+const CartSideBar: React.FC<CartSideBarProps> = ({ handleSearch }) => {
   const { cartItems } = useCartContext();
-  const [searchTerm, setSearchTerm] = useState<string>('');
-  const navigate=useNavigate();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleSearch = (query: string) => {
-    setSearchTerm(query);
+
+  const totalPrice = cartItems?.reduce((total, item) => total + (item?.discountedPrice || item?.price), 0);
+  const navigatetoCheckout = () => {
+    navigate('/checkout');
   };
-
-  const filteredCartItems = cartItems.filter(item =>
-    item.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const totalPrice = filteredCartItems.reduce((total, item) => total + (item.discountedPrice || item.price), 0);
-  const navigatetoCheckout=()=>{
-     navigate('/checkout')
-  }
 
   return (
     <div>
-      <InputBox onSearch={handleSearch} />
+      {location.pathname !== '/wishlist' && <InputBox onSearch={handleSearch} />}
       <div className="cart-sidebar">
         <h3 className="cart-heading">YOUR CART DETAILS</h3>
         <div className="cart-items">
-          {filteredCartItems.length === 0 && (
+          {cartItems?.length === 0 && (
             <p className="placeHolder">Your cart is empty right now. Please add courses to the cart from the list</p>
           )}
-          {filteredCartItems.map(item => (
+          {cartItems?.map(item => (
             <div key={item.id} className="cart-item">
               <div className="item">
                 <div className="item-div"></div>
@@ -45,8 +40,8 @@ const CartSideBar: React.FC = () => {
           ))}
         </div>
         <div className="cart-total">
-          <p>Total Cart Value: Rs {totalPrice}/-</p>
-          <button className="checkout-button" onClick={()=>navigatetoCheckout()}>
+          <p><p>Total Cart Value </p><strong>Rs {totalPrice}/-</strong></p>
+          <button className="checkout-button" onClick={navigatetoCheckout}>
             <img src={GoToCheckOut} alt="checkout" />
           </button>
         </div>

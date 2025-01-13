@@ -1,12 +1,9 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-interface CourseDetailPageParams {
-  id: string;
-}
-
 const CourseDetailPage: React.FC = () => {
-  const { id } = useParams<CourseDetailPageParams>();
+  const { id } = useParams();
+  console.log(id, 'hello i am testing')
 
   return (
     <div>

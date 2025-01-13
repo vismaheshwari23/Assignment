@@ -48,7 +48,7 @@ const App: React.FC = () => {
               <div className="content">
                 <Routes>
                   <Route path="/" element={<><Dashboard text="Discover Latest Courses on React" /><HomePages /></>} />
-                  <Route path="/wishlist" element={<><Dashboard text="My Wishlist" /><WishlistPage /></>} />
+                  <Route path="/wishlist" element={<><Dashboard text="Discover Latest Courses on React" /><WishlistPage /></>} />
                   <Route path="/cart" element={<><Dashboard text="My Cart" /><CartPage /></>} />
                   <Route path="/profile" element={<><Dashboard text="My Profile" /><ProfilePage /></>} />
                   <Route path="/course-details/:id" element={<><Dashboard text="Course Detail" /><CourseDetailPage /></>} />

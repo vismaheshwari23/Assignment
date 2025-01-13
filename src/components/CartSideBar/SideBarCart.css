@@ -15,7 +15,7 @@
 }
 
 .cart-heading {
-  font: normal normal 600 20px/24px Montserrat;
+  font: normal normal 500 15px/20px Montserrat;
   color: #0F1317;
   margin-bottom: 16px;
   display: flex;
@@ -81,7 +81,7 @@
 }
 
 .cart-total {
-  font: normal normal 600 18px/22px Montserrat;
+  font: normal normal 500 18px/22px Montserrat;
   color: #0F1317;
   padding-top: 16px;
   border-top: 1px solid #f4f4f4;
@@ -107,7 +107,6 @@
   opacity: 1;
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
   .cart-sidebar {
     top: 200px; /* Adjust top position for smaller screens */
