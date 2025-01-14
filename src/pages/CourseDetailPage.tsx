@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 const CourseDetailPage: React.FC = () => {
   const { id } = useParams();
-  console.log(id, 'hello i am testing')
+  console.log(id, 'hello i am testing');
 
   return (
     <div>

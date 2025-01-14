@@ -19,15 +19,17 @@ const useWishlistItem = () => {
   }, [wishlistItems]);
 
   const addToWishlist = (course: Course) => {
-    setWishlistItems(prevItems => [...prevItems, course]);
+    setWishlistItems((prevItems) => [...prevItems, course]);
   };
 
   const removeFromWishlist = (courseId: number) => {
-    setWishlistItems(prevItems => prevItems.filter(item => item.id !== courseId));
+    setWishlistItems((prevItems) =>
+      prevItems.filter((item) => item.id !== courseId),
+    );
   };
 
   const toggleWishlistItem = (course: Course) => {
-    if (wishlistItems.some(item => item.id === course.id)) {
+    if (wishlistItems.some((item) => item.id === course.id)) {
       removeFromWishlist(course.id);
     } else {
       addToWishlist(course);

@@ -4,9 +4,9 @@ import CourseList from '../components/CourseList/CourseList';
 function WishlistPage() {
   return (
     <div>
-      <CourseList/>
+      <CourseList />
     </div>
-  )
+  );
 }
 
-export default WishlistPage
+export default WishlistPage;

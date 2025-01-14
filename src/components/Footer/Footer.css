@@ -1,8 +1,8 @@
 .footer {
   width: 100%;
   height: 88px;
-  position: absolute;
-  top: 160vh;
+  /* position: absolute; */
+  /* top: 100vh; */
   background: #F5F5F5;
   opacity: 1;
   display: flex;

@@ -12,7 +12,9 @@ const useCart = () => {
   const [cartItems, setCartItems] = useState<Course[]>([]);
 
   useEffect(() => {
-    const storedCartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+    const storedCartItems = JSON.parse(
+      localStorage.getItem('cartItems') || '[]',
+    );
     setCartItems(storedCartItems);
   }, []);
 
@@ -23,7 +25,7 @@ const useCart = () => {
   };
 
   const removeFromCart = (courseId: number) => {
-    const updatedCartItems = cartItems.filter(item => item.id !== courseId);
+    const updatedCartItems = cartItems.filter((item) => item.id !== courseId);
     setCartItems(updatedCartItems);
     localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
   };

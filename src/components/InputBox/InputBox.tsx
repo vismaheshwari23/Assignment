@@ -12,7 +12,7 @@ const InputBox: React.FC<InputBoxProps> = ({ onSearch }) => {
   useEffect(() => {
     const handler = setTimeout(() => {
       onSearch(searchValue);
-    }, 600);
+    }, 400);
 
     return () => {
       clearTimeout(handler);

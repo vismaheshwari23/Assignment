@@ -39,7 +39,7 @@ const CourseList: React.FC = () => {
 
   const handleSearch = (query: string) => {
     setSearchTerm(query);
-    const filtermockCourses = mockCourses.filter(course =>
+    const filtermockCourses = mockCourses.filter((course) =>
       course.title.toLowerCase().includes(searchTerm.toLowerCase())
     )
     if (searchTerm) {
@@ -75,17 +75,22 @@ const CourseList: React.FC = () => {
 
   const indexOfLastCourse = currentPage * coursesPerPage;
   const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
-  const currentCourses = sortedCourses.slice(indexOfFirstCourse, indexOfLastCourse);
+  const currentCourses = sortedCourses.slice(
+    indexOfFirstCourse,
+    indexOfLastCourse,
+  );
 
   const totalPages = Math.ceil(sortedCourses.length / coursesPerPage);
 
   const handleAddToCart = (course: Course) => {
-    const isAlreadyInCart = cartItems.some(item => item.id === course.id);
+    const isAlreadyInCart = cartItems.some((item) => item.id === course.id);
     if (isAlreadyInCart) {
       setPopupMessage(`Course "${course.title}" is already in the cart`);
     } else {
       addToCart(course);
-      setPopupMessage(`Course "${course.title}" successfully added to the cart`);
+      setPopupMessage(
+        `Course "${course.title}" successfully added to the cart`,
+      );
     }
     setShowPopup(true);
   };
@@ -140,16 +145,28 @@ const CourseList: React.FC = () => {
       <div className="course-list-wrapper">
         <div className={`course-list ${showPopup ? 'blurred' : ''}`}>
           <div className="course-top-box">
-            <h3 className="course-heading">{location.pathname !== '/wishlist' ? "All Courses" : "My Wishlist"}</h3>
-            <select name="CoursePrice" className="course-select-box" onChange={handleSortChange}>
+            <h3 className="course-heading">
+              {location.pathname !== '/wishlist'
+                ? 'All Courses'
+                : 'My Wishlist'}
+            </h3>
+            <select
+              name="CoursePrice"
+              className="course-select-box"
+              onChange={handleSortChange}
+            >
               <option value="">Sort by Price</option>
               <option value="low_to_high">Low to High</option>
               <option value="high_to_low">High to Low</option>
             </select>
           </div>
-          {location.pathname === '/wishlist' && wishlistItems.length === 0 && <p className="wishlist-item">No course in the wishlist.</p>}
-          {searchTerm && mockCourses.length===0 && <p className="wishlist-item">No course found .</p> }
-          {currentCourses.map(course => (
+          {location.pathname === '/wishlist' && wishlistItems.length === 0 && (
+            <p className="wishlist-item">No course in the wishlist.</p>
+          )}
+          {searchTerm && mockCourses.length === 0 && (
+            <p className="wishlist-item">No course found .</p>
+          )}
+          {currentCourses.map((course) => (
             <CourseCard
               key={course.id}
               course={course}
@@ -157,11 +174,13 @@ const CourseList: React.FC = () => {
               addToWishlist={addToWishlist}
             />
           ))}
-          <div className="pagination">
-            {renderPaginationButtons()}
-          </div>
+          <div className="pagination">{renderPaginationButtons()}</div>
         </div>
-        <Popup message={popupMessage} isVisible={showPopup} onClose={handleClosePopup} />
+        <Popup
+          message={popupMessage}
+          isVisible={showPopup}
+          onClose={handleClosePopup}
+        />
       </div>
       <div className="sidebar-container">
         <CartSideBar handleSearch={handleSearch} />

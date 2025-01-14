@@ -1,6 +1,6 @@
 .custom-input-box {
   position: absolute;
-  top: 187px;
+  top: 190px;
   right: 140px; 
   width: calc(35% - 140px);
   height: 40px;
@@ -21,7 +21,7 @@
 
 .custom-input-button {
   position: absolute;
-  top: 187px;
+  top: 190px;
   right: 140px;
   width: 52px;
   height: 38px;

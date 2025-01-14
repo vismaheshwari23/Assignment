@@ -20,13 +20,13 @@ const DynamicTitle: React.FC = () => {
 
   useEffect(() => {
     const routeTitles: { [key: string]: string } = {
-      '/': '-Discover Latest Courses on React - HashedIn University',
-      '/wishlist': '-My Wishlist - HashedIn University',
-      '/cart': '-My Cart - HashedIn University',
+      '/': '-discover Latest Courses on React - HashedIn University',
+      '/wishlist': '-my Wishlist - HashedIn University',
+      '/cart': '-shopping Cart - HashedIn University',
       '/profile': '-My Profile - HashedIn University',
       '/course-details/:id': '-Course Detail - HashedIn University',
-      '/checkout': '-Checkout - HashedIn University',
-      '*': 'Error - HashedIn University',
+      '/checkout': '-checkout - HashedIn University',
+      '*': 'error - HashedIn University',
     };
     const path = location.pathname;
     const dynamicTitle = routeTitles[path] || '-HashedIn University';
@@ -49,7 +49,7 @@ const App: React.FC = () => {
                 <Routes>
                   <Route path="/" element={<><Dashboard text="Discover Latest Courses on React" /><HomePages /></>} />
                   <Route path="/wishlist" element={<><Dashboard text="Discover Latest Courses on React" /><WishlistPage /></>} />
-                  <Route path="/cart" element={<><Dashboard text="My Cart" /><CartPage /></>} />
+                  <Route path="/cart" element={<><Dashboard text="Shopping Cart" /><CartPage /></>} />
                   <Route path="/profile" element={<><Dashboard text="My Profile" /><ProfilePage /></>} />
                   <Route path="/course-details/:id" element={<><Dashboard text="Course Detail" /><CourseDetailPage /></>} />
                   <Route path="/checkout" element={<><Dashboard text="Checkout" /><CheckoutPage /></>} />
@@ -57,7 +57,7 @@ const App: React.FC = () => {
                 </Routes>
               </div>
             </div>
-            <Footer />
+            {/* <Footer /> */}
           </CartProvider>
         </WishlistProvider>
       </ErrorBoundary>
