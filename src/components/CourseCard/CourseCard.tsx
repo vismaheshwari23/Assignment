@@ -43,13 +43,15 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, addToCart }) => {
     } else {
       setShowAddToWishlist(true);
     }
-  }, [location.pathname]);
+  }, [location.pathname, wishlistItems, toggleWishlistItem]);
 
   return (
     <div className="course-card">
       <div className="logo-div"></div>
       <div className="course-info">
-        <div className="course-title">
+        <div
+          className={`course-title ${showAddToWishlist ? '' : 'WishlistTitle'}`}
+        >
           <h2>{course.title}</h2>
           <div className="course-title-button">
             <button>React</button>
@@ -57,18 +59,16 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, addToCart }) => {
           </div>
         </div>
         <p className="educator">{course.educator}</p>
-        {showAddToWishlist && (
-          <button
-            className="add-to-wishlist"
-            onClick={() => toggleWishlistItem(course)}
-          >
-            {isCourseInWishlist ? (
-              <img src={WishListLogoActive} alt="added to wishlist" />
-            ) : (
-              <img src={WishListLogo} alt="add to wishlist" />
-            )}
-          </button>
-        )}
+        <button
+          className={`add-to-wishlist ${showAddToWishlist ? '' : 'Visible'}`}
+          onClick={() => toggleWishlistItem(course)}
+        >
+          {isCourseInWishlist ? (
+            <img src={WishListLogoActive} alt="added to wishlist" />
+          ) : (
+            <img src={WishListLogo} alt="add to wishlist" />
+          )}
+        </button>
         <p>
           {course.discountedPrice ? (
             <div className="price">
@@ -82,10 +82,12 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, addToCart }) => {
           )}
         </p>
       </div>
-      <div className="actions add-to-cart">
+      <div
+        className={`actions add-to-cart ${showAddToWishlist ? '' : 'WishlistAdd-to-cart'}`}
+      >
         <button onClick={() => addToCart(course)}>ADD TO CART</button>
       </div>
-      {location.pathname === '/wishlist' && (
+      {!showAddToWishlist && (
         <button
           className="removeWishlist"
           onClick={() => toggleWishlistItem(course)}

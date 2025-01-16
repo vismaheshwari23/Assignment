@@ -27,6 +27,7 @@ const CourseList: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const location = useLocation();
   const { wishlistItems } = useWishlistContext();
+  const { cartItems, addToCart } = useCartContext();
 
   useEffect(() => {
     if (location.pathname === '/wishlist') {
@@ -34,21 +35,17 @@ const CourseList: React.FC = () => {
     } else {
       setMockCourse(mockData);
     }
+    setCurrentPage(1);
   }, [location.pathname, wishlistItems]);
-
-  const coursesPerPage = 6;
-  const { cartItems, addToCart } = useCartContext();
 
   const handleSearch = (query: string) => {
     setSearchTerm(query);
-    const filteredCourses = mockCourses.filter((course) =>
+    const filteredCourses = (
+      location.pathname === '/wishlist' ? wishlistItems : mockData
+    ).filter((course) =>
       course.title.toLowerCase().includes(query.toLowerCase()),
     );
-    if (searchTerm) {
-      setMockCourse(filteredCourses);
-    } else {
-      setMockCourse(mockData);
-    }
+    setMockCourse(filteredCourses);
   };
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -73,6 +70,7 @@ const CourseList: React.FC = () => {
     return 0;
   });
 
+  const coursesPerPage = 6;
   const indexOfLastCourse = currentPage * coursesPerPage;
   const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
   const currentCourses = sortedCourses.slice(
@@ -170,7 +168,7 @@ const CourseList: React.FC = () => {
           {location.pathname !== '/wishlist' && mockCourses.length === 0 && (
             <p className="wishlist-item">No course found.</p>
           )}
-          {mockCourses.length > 0 &&
+          {currentCourses.length > 0 &&
             currentCourses.map((course) => (
               <CourseCard
                 key={course.id}

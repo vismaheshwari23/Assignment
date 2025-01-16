@@ -16,13 +16,29 @@ interface WishlistContextProps {
   toggleWishlistItem: (course: Course) => void;
 }
 
-const WishlistContext = createContext<WishlistContextProps | undefined>(undefined);
+const WishlistContext = createContext<WishlistContextProps | undefined>(
+  undefined,
+);
 
-export const WishlistProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const { wishlistItems, addToWishlist, removeFromWishlist, toggleWishlistItem } = useWishlistItem();
+export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
+  const {
+    wishlistItems,
+    addToWishlist,
+    removeFromWishlist,
+    toggleWishlistItem,
+  } = useWishlistItem();
 
   return (
-    <WishlistContext.Provider value={{ wishlistItems, addToWishlist, removeFromWishlist, toggleWishlistItem }}>
+    <WishlistContext.Provider
+      value={{
+        wishlistItems,
+        addToWishlist,
+        removeFromWishlist,
+        toggleWishlistItem,
+      }}
+    >
       {children}
     </WishlistContext.Provider>
   );
@@ -31,7 +47,9 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({ children }
 export const useWishlistContext = (): WishlistContextProps => {
   const context = useContext(WishlistContext);
   if (!context) {
-    throw new Error('useWishlistContext must be used within a WishlistProvider');
+    throw new Error(
+      'useWishlistContext must be used within a WishlistProvider',
+    );
   }
   return context;
 };
