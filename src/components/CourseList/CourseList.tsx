@@ -42,9 +42,13 @@ const CourseList: React.FC = () => {
   const handleSearch = (query: string) => {
     setSearchTerm(query);
     const filteredCourses = mockCourses.filter((course) =>
-      course.title.toLowerCase().includes(query.toLowerCase())
+      course.title.toLowerCase().includes(query.toLowerCase()),
     );
-    setMockCourse(filteredCourses);
+    if (searchTerm) {
+      setMockCourse(filteredCourses);
+    } else {
+      setMockCourse(mockData);
+    }
   };
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -71,7 +75,10 @@ const CourseList: React.FC = () => {
 
   const indexOfLastCourse = currentPage * coursesPerPage;
   const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
-  const currentCourses = sortedCourses.slice(indexOfFirstCourse, indexOfLastCourse);
+  const currentCourses = sortedCourses.slice(
+    indexOfFirstCourse,
+    indexOfLastCourse,
+  );
 
   const totalPages = Math.ceil(sortedCourses.length / coursesPerPage);
 
@@ -81,7 +88,9 @@ const CourseList: React.FC = () => {
       setPopupMessage(`Course "${course.title}" is already in the cart`);
     } else {
       addToCart(course);
-      setPopupMessage(`Course "${course.title}" successfully added to the cart`);
+      setPopupMessage(
+        `Course "${course.title}" successfully added to the cart`,
+      );
     }
     setShowPopup(true);
   };
@@ -107,7 +116,7 @@ const CourseList: React.FC = () => {
       buttons.push(
         <button key="prev" onClick={() => handlePageChange(currentPage - 1)}>
           <img src={PaginationArrow2} alt="previous" />
-        </button>
+        </button>,
       );
     }
     for (let i = startPage; i <= endPage; i++) {
@@ -118,7 +127,7 @@ const CourseList: React.FC = () => {
           className={currentPage === i ? 'active' : ''}
         >
           {i}
-        </button>
+        </button>,
       );
     }
 
@@ -126,7 +135,7 @@ const CourseList: React.FC = () => {
       buttons.push(
         <button key="next" onClick={() => handlePageChange(currentPage + 1)}>
           <img src={PaginationArrow} alt="next" />
-        </button>
+        </button>,
       );
     }
     return buttons;
@@ -138,7 +147,9 @@ const CourseList: React.FC = () => {
         <div className={`course-list ${showPopup ? 'blurred' : ''}`}>
           <div className="course-top-box">
             <h3 className="course-heading">
-              {location.pathname !== '/wishlist' ? 'All Courses' : 'My Wishlist'}
+              {location.pathname !== '/wishlist'
+                ? 'All Courses'
+                : 'My Wishlist'}
             </h3>
             <select
               name="CoursePrice"

@@ -6,7 +6,12 @@ const mockData = [
     discountedPrice: 80,
     educator: 'John Doe',
   },
-  { id: 2, title: 'Advanced React', price: 150, educator: 'Jane Smith' },
+  {
+    id: 2,
+    title: 'Advanced React',
+    price: 150,
+    educator: 'Jane Smith',
+  },
   {
     id: 3,
     title: 'React and Redux',
@@ -34,7 +39,12 @@ const mockData = [
     discountedPrice: 120,
     educator: 'Diana White',
   },
-  { id: 7, title: 'Svelte Essentials', price: 80, educator: 'Eve Green' },
+  {
+    id: 7,
+    title: 'Svelte Essentials',
+    price: 80,
+    educator: 'Eve Green',
+  },
   {
     id: 8,
     title: 'Next.js Mastery',
@@ -42,13 +52,57 @@ const mockData = [
     discountedPrice: 100,
     educator: 'Frank Blue',
   },
-  { id: 9, title: 'Nuxt.js Deep Dive', price: 120, educator: 'Grace Yellow' },
+  {
+    id: 9,
+    title: 'Nuxt.js Deep Dive',
+    price: 120,
+    educator: 'Grace Yellow',
+  },
   {
     id: 10,
     title: 'React Native Basics',
     price: 110,
     discountedPrice: 90,
     educator: 'Hank Purple',
+  },
+  {
+    id: 11,
+    title: 'JavaScript Essentials',
+    price: 70,
+    educator: 'Ivy Orange',
+  },
+  {
+    id: 12,
+    title: 'TypeScript in Depth',
+    price: 100,
+    discountedPrice: 85,
+    educator: 'Jack Red',
+  },
+  {
+    id: 13,
+    title: 'Node.js Fundamentals',
+    price: 95,
+    educator: 'Karen Pink',
+  },
+  {
+    id: 14,
+    title: 'Express.js Advanced',
+    price: 110,
+    discountedPrice: 95,
+    educator: 'Leo Brown',
+  },
+  {
+    id: 15,
+    title: 'GraphQL Basics',
+    price: 120,
+    educator: 'Mona Grey',
+  },
+  {
+    id: 16,
+    title: 'Apollo Client Mastery',
+    price: 130,
+    discountedPrice: 110,
+    educator: 'Nina Silver',
   },
 ];
 
