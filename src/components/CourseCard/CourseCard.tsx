@@ -72,12 +72,12 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, addToCart }) => {
         <p>
           {course.discountedPrice ? (
             <div className="price">
-              <strong>Rs {course.discountedPrice}/-</strong>
-              <s>Rs {course.price}/-</s>
+              <strong>Rs{course.discountedPrice}/-</strong>
+              <s>Rs{course.price}/-</s>
             </div>
           ) : (
             <div className="price">
-              Rs {course.price}/- <s>{' - '}</s>
+              Rs {course.price}/-<s>{'-'}</s>
             </div>
           )}
         </p>

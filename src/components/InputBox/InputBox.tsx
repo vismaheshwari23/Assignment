@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './InputBox.css';
 import { SearchIcon } from '../../assests';
+import { useLocation } from 'react-router-dom';
 
 interface InputBoxProps {
   onSearch: (query: string) => void;
@@ -9,6 +10,7 @@ interface InputBoxProps {
 const InputBox: React.FC<InputBoxProps> = ({ onSearch }) => {
   const [searchValue, setSearchValue] = useState<string>('');
 
+  const location = useLocation();
   useEffect(() => {
     const handler = setTimeout(() => {
       onSearch(searchValue);
@@ -20,10 +22,15 @@ const InputBox: React.FC<InputBoxProps> = ({ onSearch }) => {
   }, [searchValue, onSearch]);
 
   return (
-    <div>
+    <div
+      className="custom-input-box"
+      style={{
+        visibility: location.pathname === '/wishlist' ? 'hidden' : 'visible',
+      }}
+    >
       <input
         type="text"
-        className="custom-input-box"
+        className="custom-input-box-input"
         placeholder="Search here"
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}

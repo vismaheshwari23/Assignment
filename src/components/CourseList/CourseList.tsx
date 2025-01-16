@@ -8,6 +8,7 @@ import { PaginationArrow, PaginationArrow2 } from '../../assests/index.js';
 import { useCartContext } from '../../context/CartContext.tsx';
 import { useLocation } from 'react-router-dom';
 import { useWishlistContext } from '../../context/WishlistContext.tsx';
+import InputBox from '../InputBox/InputBox.tsx';
 
 interface Course {
   id: number;
@@ -17,11 +18,8 @@ interface Course {
   educator: string;
 }
 
-
-
 const CourseList: React.FC = () => {
-  const [mockCourses, setMockCourse] = useState<Course[]>(mockData)
-  // const mockCourses: Course[] = mockData;
+  const [mockCourses, setMockCourse] = useState<Course[]>(mockData);
   const [currentPage, setCurrentPage] = useState(1);
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState('');
@@ -29,27 +27,25 @@ const CourseList: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const location = useLocation();
   const { wishlistItems } = useWishlistContext();
+
   useEffect(() => {
     if (location.pathname === '/wishlist') {
-      setMockCourse(wishlistItems)
+      setMockCourse(wishlistItems);
+    } else {
+      setMockCourse(mockData);
     }
   }, [location.pathname, wishlistItems]);
-  const coursesPerPage = 4;
+
+  const coursesPerPage = 6;
   const { cartItems, addToCart } = useCartContext();
 
   const handleSearch = (query: string) => {
     setSearchTerm(query);
-    const filtermockCourses = mockCourses.filter((course) =>
-      course.title.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    if (searchTerm) {
-      setMockCourse(filtermockCourses);
-    } else {
-      setMockCourse(mockData);
-    }
+    const filteredCourses = mockCourses.filter((course) =>
+      course.title.toLowerCase().includes(query.toLowerCase())
+    );
+    setMockCourse(filteredCourses);
   };
-
-  console.log(searchTerm, 'hello I am tesing Search')
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSortOption(event.target.value);
@@ -75,10 +71,7 @@ const CourseList: React.FC = () => {
 
   const indexOfLastCourse = currentPage * coursesPerPage;
   const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
-  const currentCourses = sortedCourses.slice(
-    indexOfFirstCourse,
-    indexOfLastCourse,
-  );
+  const currentCourses = sortedCourses.slice(indexOfFirstCourse, indexOfLastCourse);
 
   const totalPages = Math.ceil(sortedCourses.length / coursesPerPage);
 
@@ -88,9 +81,7 @@ const CourseList: React.FC = () => {
       setPopupMessage(`Course "${course.title}" is already in the cart`);
     } else {
       addToCart(course);
-      setPopupMessage(
-        `Course "${course.title}" successfully added to the cart`,
-      );
+      setPopupMessage(`Course "${course.title}" successfully added to the cart`);
     }
     setShowPopup(true);
   };
@@ -140,22 +131,21 @@ const CourseList: React.FC = () => {
     }
     return buttons;
   };
+
   return (
     <div className="course-list-container">
       <div className="course-list-wrapper">
         <div className={`course-list ${showPopup ? 'blurred' : ''}`}>
           <div className="course-top-box">
             <h3 className="course-heading">
-              {location.pathname !== '/wishlist'
-                ? 'All Courses'
-                : 'My Wishlist'}
+              {location.pathname !== '/wishlist' ? 'All Courses' : 'My Wishlist'}
             </h3>
             <select
               name="CoursePrice"
               className="course-select-box"
               onChange={handleSortChange}
             >
-              <option value="">Sort by Price</option>
+              <option value="">Course Price</option>
               <option value="low_to_high">Low to High</option>
               <option value="high_to_low">High to Low</option>
             </select>
@@ -164,16 +154,20 @@ const CourseList: React.FC = () => {
             <p className="wishlist-item">No course in the wishlist.</p>
           )}
           {searchTerm && mockCourses.length === 0 && (
-            <p className="wishlist-item">No course found .</p>
+            <p className="wishlist-item">No course found.</p>
           )}
-          {currentCourses.map((course) => (
-            <CourseCard
-              key={course.id}
-              course={course}
-              addToCart={handleAddToCart}
-              addToWishlist={addToWishlist}
-            />
-          ))}
+          {location.pathname !== '/wishlist' && mockCourses.length === 0 && (
+            <p className="wishlist-item">No course found.</p>
+          )}
+          {mockCourses.length > 0 &&
+            currentCourses.map((course) => (
+              <CourseCard
+                key={course.id}
+                course={course}
+                addToCart={handleAddToCart}
+                addToWishlist={addToWishlist}
+              />
+            ))}
           <div className="pagination">{renderPaginationButtons()}</div>
         </div>
         <Popup
@@ -183,7 +177,8 @@ const CourseList: React.FC = () => {
         />
       </div>
       <div className="sidebar-container">
-        <CartSideBar handleSearch={handleSearch} />
+        <InputBox onSearch={handleSearch} />
+        <CartSideBar />
       </div>
     </div>
   );

@@ -1,68 +1,35 @@
 .custom-input-box {
-  position: absolute;
-  top: 190px;
-  right: 140px; 
-  width: calc(35% - 140px);
-  height: 40px;
-  margin-top: 10px;
-  background: #EFF2FF;
-  opacity: 1;
-  border: none;
-  padding: 8px;
-  font: normal normal 400 16px/20px Montserrat;
-  color: #0F1317;
-  box-sizing: border-box; 
+  width: 100%;
+  max-width: 397.63px;
+  height: 100%;
+  max-height: 40px;
+  margin-top: 32px;
+  margin-left: 16px;
 }
-
-.custom-input-box:focus {
+.custom-input-box-input {
+  height: 100%;
+  width: 85%;
+  background: #eff2ff;
+  opacity: 1;
+  padding: 8px;
+  border: none;
+  font: normal normal 400 16px/20px Montserrat;
+  color: #0f1317;
+  box-sizing: border-box;
+}
+.custom-input-box-input:focus {
   border: none;
   outline: none;
 }
 
 .custom-input-button {
-  position: absolute;
-  top: 190px;
-  right: 140px;
-  width: 52px;
-  height: 38px;
-  margin-top: 10px;
+  width: 15%;
+  height: 100%;
   background: transparent;
   opacity: 1;
-  background-color: #FF6738;
+  padding: 8px;
+  font: normal normal 400 16px/20px Montserrat;
+  background-color: #ff6738;
   border: none;
-  cursor: pointer; 
-}
-
-@media (max-width: 768px) {
-  .custom-input-box {
-    top: 150px; 
-    right: 140px; 
-    width: calc(100% - 40px); 
-    padding: 6px; 
-    font-size: 14px; 
-  }
-
-  .custom-input-button {
-    top: 187px; 
-    right: 20px;
-    width: 48px; 
-    height: 36px; 
-  }
-}
-
-@media (max-width: 480px) {
-  .custom-input-box {
-    top: 120px; 
-    right: 140px; 
-    width: calc(100% - 20px); 
-    padding: 4px; 
-    font-size: 12px; 
-  }
-
-  .custom-input-button {
-    top: 187px; 
-    right: 140px; 
-    width: 44px; 
-    height: 34px; 
-  }
+  cursor: pointer;
 }

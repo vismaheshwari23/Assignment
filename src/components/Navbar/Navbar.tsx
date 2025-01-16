@@ -3,8 +3,10 @@ import { HashedlnLogo, ProfileLogo, shopingCart } from '../../assests';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 import { useCartContext } from '../../context/CartContext';
+import { useProfile } from '../../context/ProfileContext';
 const Navbar: React.FC = () => {
   const { cartItems } = useCartContext();
+  const { profileSave } = useProfile();
   return (
     <nav className="navbar">
       <div className="navbar-logo">
@@ -27,7 +29,13 @@ const Navbar: React.FC = () => {
         </li>
         <li>
           <NavLink to="/profile">
-            <img src={ProfileLogo} alt="ProfileLogo" />
+            {profileSave.profilePicture ? (
+              <div className="ProfilePicture">
+                <img src={profileSave.profilePicture} alt="ProfilePicture" />
+              </div>
+            ) : (
+              <img src={ProfileLogo} alt="ProfileLogo" />
+            )}
           </NavLink>
         </li>
       </ul>
