@@ -89,7 +89,13 @@ const Cart: React.FC<CourseCardProps> = ({ course }) => {
                 </div>
               </div>
               <div className="course-info">
-                <div style={{ display: 'flex' }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
                   <button
                     className="add-to-wishlist"
                     onClick={() => handleMoveToWishlist(course)}
@@ -116,17 +122,21 @@ const Cart: React.FC<CourseCardProps> = ({ course }) => {
             </div>
           </div>
         ))}
-        <div className="recommended-course">
-          <p>Recommended Courses</p>
-          {cartItems?.map((course: Course) =>
-            <CourseCard
-              key={course.id}
-              course={course}
-              addToCart={handleAddToCart}
-              addToWishlist={handleMoveToWishlist}
-            />
-          )}
-        </div>
+        {cartItems.length > 0 && (
+          <div className="recommended-course">
+            <p>Recommended Courses</p>
+            {cartItems
+              ?.slice(0, 2)
+              ?.map((course: Course) => (
+                <CourseCard
+                  key={course.id}
+                  course={course}
+                  addToCart={handleAddToCart}
+                  addToWishlist={handleMoveToWishlist}
+                />
+              ))}
+          </div>
+        )}
       </div>
       {cartItems.length > 0 && (
         <div className="total-box">
@@ -136,9 +146,7 @@ const Cart: React.FC<CourseCardProps> = ({ course }) => {
           <button
             className="total-checkout-button"
             onClick={navigatetoCheckout}
-          >
-            CHECKOUT
-          </button>
+          ></button>
         </div>
       )}
     </div>

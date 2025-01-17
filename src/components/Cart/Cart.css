@@ -1,39 +1,35 @@
 .container {
   display: flex;
+  height: 100%;
   justify-content: space-between;
-  height: 805px;
+  /* max-height: 805px; */
   width: 1640px;
-  background-color: #1873ce;
   margin-left: 140px;
+  margin-right: 140px;
 }
 
 .total-box {
-  position: absolute;
-  top: 278px;
-  right: 140px;
-  width: calc(43% - 280px);
+  width: 398px;
+  height: 216px;
   box-sizing: border-box;
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e0e0e0;
   box-shadow: 0px 3px 6px #00000029;
   padding: 10px;
   opacity: 1;
-  margin-top: -36px;
+  margin-top: 91px;
 }
 
 .cart {
-  /* position: absolute;
-  top: 278px;
-  left: 140px;
-  right: 140px; */
-  background: #ffffff 0% 0% no-repeat padding-box;
+  width: 1242px;
+  height: 100%;
+  /* max-width: 805px; */
+  padding-top: 22px;
 }
 
 .cart-details {
-  height: 24px;
-  position: relative;
-  top: -100px;
-  margin-left: 16px;
+  margin-left: 17px;
+  padding-bottom: 5px;
   text-align: left;
   font: normal normal 600 20px/24px Montserrat;
   letter-spacing: 0px;
@@ -42,22 +38,27 @@
 }
 
 .cart-content {
-  margin: 0;
-  padding: 0;
-  position: relative;
-  top: -100px;
-  width: calc(100% - 280px);
+  width: 1226px;
+  height: 100px;
 }
 
 .recommended-course {
-  width: calc(100% - 280px);
+  margin-top: 25px;
+  margin-bottom: 25px;
+  width: 1242px;
+  height: 333px;
   box-sizing: border-box;
-  position: relative;
-  top: -100px;
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e0e0e0;
   box-shadow: 0px 3px 6px #00000029;
   padding: 10px;
+  opacity: 1;
+}
+.recommended-course p {
+  text-align: left;
+  font: normal normal 600 18px/22px Montserrat;
+  letter-spacing: 0px;
+  color: #4e4e4e;
   opacity: 1;
 }
 
@@ -67,10 +68,10 @@
   letter-spacing: 0px;
   color: #080808;
   opacity: 1;
-  border-radius: 5%;
 }
 
 .total-price {
+  margin-top: -16px;
   text-align: left;
   font: normal normal 600 30px/37px Montserrat;
   letter-spacing: 0px;
@@ -81,28 +82,30 @@
 .total-saved {
   background: transparent 0% 0% no-repeat padding-box;
   opacity: 1;
-  color: #629a33;
+  color: #75ba75;
 }
 
 .total-checkout-button {
-  width: 100%;
-  height: 51px;
-  background-color: #ff6738 !important;
-  color: #ffffff;
-  border-radius: 3%;
   border: none;
-  font: normal normal 600 14px/19px Montserrat;
-  background: transparent 0% 0% no-repeat padding-box;
+  background: transparent url('../../assests//Group\ 65.svg') 0% 0% no-repeat
+    padding-box;
   opacity: 1;
+  width: 366px;
+  height: 51px;
+  object-fit: cover;
 }
+
 .total-checkout-button:hover {
-  background-color: #1873ce !important;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 1px 10px; 
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
 }
 
 .course-card {
   width: 100%;
   max-width: 1226px;
-  height: auto;
+  height: 100px;
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #00000029;
   border: 1px solid #f4f4f4;
@@ -141,11 +144,11 @@
   flex-direction: column !important;
   align-items: start !important;
   justify-content: center !important;
+  margin-left: 18px;
 }
 
 .Educator {
   font: normal normal medium 13px/15px Montserrat !important;
-  margin: 0 20px;
   color: #00000029;
 }
 
@@ -194,6 +197,7 @@
   letter-spacing: 0px;
   color: #1873ce;
   opacity: 1;
+  margin-right: 44px;
 }
 .course-card .add-to-wishlist:hover {
   color: #ff6738;
@@ -204,6 +208,7 @@
   height: 70px;
   background: #f2f2f2 0% 0% no-repeat padding-box;
   opacity: 1;
+  margin-bottom: -1px !important;
 }
 
 .navigate-arrow {
@@ -213,12 +218,16 @@
 
 .removeFromCart {
   background-color: transparent !important;
+  width: 28px;
+  height: 31px;
+  margin-left: -22px;
+  margin-bottom: 3px;
 }
 
 .price {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5px;
   width: 90px;
+  margin-left: 10px;
 }

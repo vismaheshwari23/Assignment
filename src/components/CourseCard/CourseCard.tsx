@@ -46,11 +46,13 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, addToCart }) => {
   }, [location.pathname, wishlistItems, toggleWishlistItem]);
 
   return (
-    <div className="course-card">
-      <div className="logo-div"></div>
+    <div
+      className={`course-card  ${location.pathname === '/cart' ? 'cartWidth' : ''}`}
+    >
       <div className="course-info">
+        <div className="logo-div"></div>
         <div
-          className={`course-title ${showAddToWishlist ? '' : 'WishlistTitle'}`}
+          className={`course-title ${showAddToWishlist ? 'WishlistTitle' : ''}`}
         >
           <h2>{course.title}</h2>
           <div className="course-title-button">
@@ -87,7 +89,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, addToCart }) => {
       >
         <button onClick={() => addToCart(course)}>ADD TO CART</button>
       </div>
-      {!showAddToWishlist && (
+      {location.pathname !== '/cart' && !showAddToWishlist && (
         <button
           className="removeWishlist"
           onClick={() => toggleWishlistItem(course)}

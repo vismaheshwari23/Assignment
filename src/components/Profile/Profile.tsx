@@ -5,19 +5,20 @@ import { useNavigate } from 'react-router-dom';
 
 const Profile: React.FC = () => {
   const navigate = useNavigate();
-  const { setProfileSave } = useProfile();
-  const [profile, setProfile] = useState({
-    displayName: '',
-    firstName: '',
-    lastName: '',
-    about: '',
-    areaOfInterest: '',
-    role: '',
-    experience: '',
-    expertise: '',
-    profilePicture: '',
-    manageRole: '',
-  });
+  const { profileSave, setProfileSave } = useProfile();
+  // const [profile, setProfile] = useState({
+  //   displayName: '',
+  //   firstName: '',
+  //   lastName: '',
+  //   about: '',
+  //   areaOfInterest: '',
+  //   role: '',
+  //   experience: '',
+  //   expertise: '',
+  //   profilePicture: '',
+  //   manageRole: '',
+  // });
+  const [profile, setProfile] = useState(profileSave);
   const [isFormValid, setIsFormValid] = useState(false);
   const [showError, setShowError] = useState(false);
   const [errors, setErrors] = useState({
@@ -117,12 +118,7 @@ const Profile: React.FC = () => {
   };
 
   const checkFormValidity = () => {
-    const requiredFields = [
-      'displayName',
-      'firstName',
-      'lastName',
-      'manageRole',
-    ];
+    const requiredFields = ['displayName', 'firstName', 'lastName'];
     let isValid = true;
 
     for (let i = 0; i < requiredFields.length; i++) {
@@ -145,6 +141,15 @@ const Profile: React.FC = () => {
           }));
           isValid = false;
         }
+        if (!profile.manageRole || errors.manageRole) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            manageRole: 'Required*',
+            experience: 'Required*',
+          }));
+          isValid = false;
+        }
+
         setErrors((prevErrors) => ({
           ...prevErrors,
           experience: 'Required*',
@@ -160,9 +165,40 @@ const Profile: React.FC = () => {
           }));
           isValid = false;
         }
+        if (!profile.manageRole || errors.manageRole) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            manageRole: 'Required*',
+            expertise: 'Required*',
+          }));
+          isValid = false;
+        }
         setErrors((prevErrors) => ({
           ...prevErrors,
           expertise: 'Required*',
+        }));
+        isValid = false;
+      }
+      if (!profile.manageRole || errors.manageRole) {
+        if (!profile.experience || errors.experience) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            experience: 'Required*',
+            manageRole: 'Required*',
+          }));
+          isValid = false;
+        }
+        if (!profile.expertise || errors.expertise) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            manageRole: 'Required*',
+            expertise: 'Required*',
+          }));
+          isValid = false;
+        }
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          manageRole: 'Required*',
         }));
         isValid = false;
       }
@@ -215,6 +251,7 @@ const Profile: React.FC = () => {
     if (isValid !== isFormValid) {
       setIsFormValid(isValid);
     }
+    console.log(errors, 'hello I am testing error');
   }, [profile]);
 
   return (
@@ -238,10 +275,7 @@ const Profile: React.FC = () => {
       </div>
       <div className="profile-form">
         <form>
-          <div
-            className="form-group"
-            style={{ display: 'flex', justifyContent: 'space-between' }}
-          >
+          <div className="form-group form-first-line">
             <div className="form-group">
               <label htmlFor="displayName">Display Name</label>
               <input
@@ -285,7 +319,7 @@ const Profile: React.FC = () => {
               )}
             </div>
           </div>
-          <div className="form-group">
+          <div className={`form-group ${showError ? 'form-about' : ''}`}>
             <label htmlFor="about">About Yourself</label>
             <textarea
               id="about"
@@ -366,93 +400,99 @@ const Profile: React.FC = () => {
             </div>
           </div>
           {profile.role === 'professional' && (
-            <div className="form-group">
-              <label>How much experience do you have?</label>
-              <div className="opt">
-                <label>
+            <div className="Additional-details">
+              {profile.role === 'professional' && (
+                <div className="form-group">
+                  <label>How much experience do you have?</label>
+                  <div className="opt">
+                    <label>
+                      <input
+                        type="radio"
+                        name="experience"
+                        value="0-5"
+                        checked={profile.experience === '0-5'}
+                        onChange={handleChange}
+                      />
+                      0-5
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="experience"
+                        value="5-10"
+                        checked={profile.experience === '5-10'}
+                        onChange={handleChange}
+                      />
+                      5-10
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="experience"
+                        value="10+"
+                        checked={profile.experience === '10+'}
+                        onChange={handleChange}
+                      />
+                      10&Above
+                    </label>
+                  </div>
+                </div>
+              )}
+              {profile.role === 'professional' && (
+                <div className="form-group">
+                  <label>What is your expertise?</label>
+                  <div className="opt">
+                    <label>
+                      <input
+                        type="radio"
+                        name="expertise"
+                        value="java"
+                        checked={profile.expertise === 'java'}
+                        onChange={handleChange}
+                      />
+                      Java
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="expertise"
+                        value="react"
+                        checked={profile.expertise === 'react'}
+                        onChange={handleChange}
+                      />
+                      React
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="expertise"
+                        value="backend"
+                        checked={profile.expertise === 'backend'}
+                        onChange={handleChange}
+                      />
+                      Backend
+                    </label>
+                  </div>
+                </div>
+              )}
+              {
+                <div className="form-group">
+                  <label htmlFor="ManageRole">Manage your role</label>
                   <input
-                    type="radio"
-                    name="experience"
-                    value="0-5"
-                    checked={profile.experience === '0-5'}
+                    type="text"
+                    placeholder="Add your role"
+                    id="manageRole"
+                    name="manageRole"
+                    value={profile.manageRole}
                     onChange={handleChange}
                   />
-                  0-5
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="experience"
-                    value="5-10"
-                    checked={profile.experience === '5-10'}
-                    onChange={handleChange}
-                  />
-                  5-10
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="experience"
-                    value="10+"
-                    checked={profile.experience === '10+'}
-                    onChange={handleChange}
-                  />
-                  10&Above
-                </label>
-              </div>
+                  {showError && errors.manageRole && (
+                    <p className="error">{errors.manageRole}</p>
+                  )}
+                </div>
+              }
             </div>
           )}
-          {profile.role === 'professional' && (
-            <div className="form-group">
-              <label>What is your expertise?</label>
-              <div className="opt">
-                <label>
-                  <input
-                    type="radio"
-                    name="expertise"
-                    value="java"
-                    checked={profile.expertise === 'java'}
-                    onChange={handleChange}
-                  />
-                  Java
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="expertise"
-                    value="react"
-                    checked={profile.expertise === 'react'}
-                    onChange={handleChange}
-                  />
-                  React
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="expertise"
-                    value="backend"
-                    checked={profile.expertise === 'backend'}
-                    onChange={handleChange}
-                  />
-                  Backend
-                </label>
-              </div>
-            </div>
-          )}
-          <div className="form-group">
-            <label htmlFor="ManageRole">Manage your role</label>
-            <input
-              type="text"
-              placeholder="Add your role"
-              id="manageRole"
-              name="manageRole"
-              value={profile.manageRole}
-              onChange={handleChange}
-            />
-            {showError && errors.manageRole && (
-              <p className="error">{errors.manageRole}</p>
-            )}
-          </div>
           <div className="button-container">
             <button
               className="save-button"

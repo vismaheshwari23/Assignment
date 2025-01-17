@@ -126,8 +126,11 @@
   opacity: 1;
 }
 
-.cart-total .checkout-button:hover {
-  color: #1873ce !important;
+.cart-total .checkout-button :hover {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 1px 10px; 
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
 }
 
 .placeHolder {

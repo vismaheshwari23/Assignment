@@ -13,7 +13,7 @@ const CartSideBar: React.FC = () => {
     0,
   );
   const navigatetoCheckout = () => {
-    navigate('/checkout');
+    navigate('/cart');
   };
 
   return (
