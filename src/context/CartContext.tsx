@@ -5,15 +5,20 @@ interface CartContextType {
   cartItems: Course[];
   addToCart: (course: Course) => void;
   removeFromCart: (courseId: number) => void;
+  setCartItems: React.Dispatch<React.SetStateAction<Course>>;
 }
 
-const CartContext = createContext<CartContextType | undefined>(undefined);
+export const CartContext = createContext<CartContextType | undefined>(
+  undefined,
+);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const { cartItems, addToCart, removeFromCart } = useCart();
+  const { cartItems, addToCart, removeFromCart, setCartItems } = useCart();
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
+    <CartContext.Provider
+      value={{ cartItems, addToCart, removeFromCart,  setCartItems}}
+    >
       {children}
     </CartContext.Provider>
   );

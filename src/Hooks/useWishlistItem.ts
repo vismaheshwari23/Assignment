@@ -1,12 +1,5 @@
 import { useState, useEffect } from 'react';
-
-interface Course {
-  id: number;
-  title: string;
-  price: number;
-  discountedPrice?: number;
-  educator: string;
-}
+import Course from '../Utils/interface';
 
 const useWishlistItem = () => {
   const [wishlistItems, setWishlistItems] = useState<Course[]>(() => {

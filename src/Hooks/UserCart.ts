@@ -1,12 +1,5 @@
 import { useState, useEffect } from 'react';
-
-export interface Course {
-  id: number;
-  title: string;
-  price: number;
-  discountedPrice?: number;
-  educator: string;
-}
+import Course from '../Utils/interface';
 
 const useCart = () => {
   const [cartItems, setCartItems] = useState<Course[]>([]);
@@ -34,6 +27,7 @@ const useCart = () => {
     cartItems,
     addToCart,
     removeFromCart,
+    setCartItems,
   };
 };
 

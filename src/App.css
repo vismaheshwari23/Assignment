@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column !important;
   width: 1920px;
-  /* height: 1151px; */
+  height:auto !important;
+  /* max-height: 1151px; */
 }
 

@@ -6,21 +6,35 @@ import { CartProvider } from '../context/CartContext';
 import { WishlistProvider } from '../context/WishlistContext';
 import CourseList from '../components/CourseList/CourseList';
 
+jest.mock('../Utils/MockData', () => [
+  { id: 1, title: 'React Basics', price: 100, educator: 'John Doe' },
+  { id: 2, title: 'Advanced React', price: 150, educator: 'Jane Doe' },
+  { id: 3, title: 'React and Redux', price: 200, educator: 'Jim Doe' },
+  { id: 4, title: 'Vue.js Fundamentals', price: 120, educator: 'Jack Doe' },
+]);
+
 describe('CourseList Component', () => {
   it('renders all courses', () => {
     render(
       <Router>
-        <CartProvider>
-          <WishlistProvider>
+        <WishlistProvider>
+          <CartProvider>
             <CourseList />
-          </WishlistProvider>
-        </CartProvider>
-      </Router>
+          </CartProvider>
+        </WishlistProvider>
+      </Router>,
     );
 
-    const courseTitles = ['React Basics', 'Advanced React', 'React and Redux', 'Vue.js Fundamentals'];
-    courseTitles.forEach(title => {
-      const courseTitleElement = screen.getByText((content, element) => content.includes(title));
+    const courseTitles = [
+      'React Basics',
+      'Advanced React',
+      'React and Redux',
+      'Vue.js Fundamentals',
+    ];
+    courseTitles.forEach((title) => {
+      const courseTitleElement = screen.getByText((content, element) =>
+        content.includes(title),
+      );
       expect(courseTitleElement).toBeInTheDocument();
     });
   });
@@ -28,12 +42,12 @@ describe('CourseList Component', () => {
   it('renders the sort dropdown', () => {
     render(
       <Router>
-        <CartProvider>
-          <WishlistProvider>
+        <WishlistProvider>
+          <CartProvider>
             <CourseList />
-          </WishlistProvider>
-        </CartProvider>
-      </Router>
+          </CartProvider>
+        </WishlistProvider>
+      </Router>,
     );
 
     const sortDropdown = screen.getByRole('combobox');
@@ -43,12 +57,12 @@ describe('CourseList Component', () => {
   it('renders pagination buttons', () => {
     render(
       <Router>
-        <CartProvider>
-          <WishlistProvider>
+        <WishlistProvider>
+          <CartProvider>
             <CourseList />
-          </WishlistProvider>
-        </CartProvider>
-      </Router>
+          </CartProvider>
+        </WishlistProvider>
+      </Router>,
     );
 
     const paginationButtons = screen.getAllByRole('button');
@@ -58,12 +72,12 @@ describe('CourseList Component', () => {
   it('shows popup message when a course is added to the cart', () => {
     render(
       <Router>
-        <CartProvider>
-          <WishlistProvider>
+        <WishlistProvider>
+          <CartProvider>
             <CourseList />
-          </WishlistProvider>
-        </CartProvider>
-      </Router>
+          </CartProvider>
+        </WishlistProvider>
+      </Router>,
     );
 
     const addToCartButton = screen.getAllByText(/Add to Cart/i)[0];

@@ -5,19 +5,8 @@ import React, {
   useEffect,
   ReactNode,
 } from 'react';
+import { Profile } from '../Utils/interface';
 
-interface Profile {
-  displayName: string;
-  firstName: string;
-  lastName: string;
-  about: string;
-  areaOfInterest: string;
-  role: string;
-  experience: string;
-  expertise: string;
-  profilePicture: string;
-  manageRole: string;
-}
 
 interface ProfileContextProps {
   profileSave: Profile;

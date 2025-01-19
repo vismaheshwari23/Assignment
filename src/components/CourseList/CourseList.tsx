@@ -9,14 +9,7 @@ import { useCartContext } from '../../context/CartContext.tsx';
 import { useLocation } from 'react-router-dom';
 import { useWishlistContext } from '../../context/WishlistContext.tsx';
 import InputBox from '../InputBox/InputBox.tsx';
-
-interface Course {
-  id: number;
-  title: string;
-  price: number;
-  discountedPrice?: number;
-  educator: string;
-}
+import Course from '../../Utils/interface.tsx';
 
 const CourseList: React.FC = () => {
   const [mockCourses, setMockCourse] = useState<Course[]>(mockData);
@@ -83,12 +76,10 @@ const CourseList: React.FC = () => {
   const handleAddToCart = (course: Course) => {
     const isAlreadyInCart = cartItems.some((item) => item.id === course.id);
     if (isAlreadyInCart) {
-      setPopupMessage(`Course "${course.title}" is already in the cart`);
+      setPopupMessage(`Course ${course.title} already exist in the cart`);
     } else {
       addToCart(course);
-      setPopupMessage(
-        `Course "${course.title}" successfully added to the cart`,
-      );
+      setPopupMessage(`Course successfully added to the cart`);
     }
     setShowPopup(true);
   };

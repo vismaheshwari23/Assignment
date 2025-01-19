@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './InputBox.css';
 import { SearchIcon } from '../../assests';
 import { useLocation } from 'react-router-dom';
-
-interface InputBoxProps {
-  onSearch: (query: string) => void;
-}
+import { InputBoxProps } from '../../Utils/interface';
 
 const InputBox: React.FC<InputBoxProps> = ({ onSearch }) => {
   const [searchValue, setSearchValue] = useState<string>('');

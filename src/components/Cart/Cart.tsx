@@ -1,29 +1,12 @@
 import React, { useState } from 'react';
 import './Cart.css';
 import { useLocation, useNavigate } from 'react-router-dom';
-import {
-  ArrowLogo,
-  DeleteIcon,
-  WishListLogo,
-  WishListLogoActive,
-} from '../../assests';
+import { DeleteIcon } from '../../assests';
 import { useWishlistContext } from '../../context/WishlistContext';
 import { useCartContext } from '../../context/CartContext';
 import CourseCard from '../CourseCard/CourseCard';
-
-interface Course {
-  id: number;
-  title: string;
-  price: number;
-  discountedPrice?: number;
-  educator: string;
-}
-
-interface CourseCardProps {
-  course: Course;
-  addToCart: (course: Course) => void;
-  removeFromCart: (course: Course) => void;
-}
+import mockData from '../../Utils/MockData';
+import Course, { CourseCardProps } from '../../Utils/interface';
 
 const Cart: React.FC<CourseCardProps> = ({ course }) => {
   const navigate = useNavigate();
@@ -57,7 +40,7 @@ const Cart: React.FC<CourseCardProps> = ({ course }) => {
   };
 
   const navigatetoCheckout = () => {
-    navigate('/checkout');
+    navigate('/payment');
   };
 
   const totalPrice = cartItems?.reduce(
@@ -69,7 +52,9 @@ const Cart: React.FC<CourseCardProps> = ({ course }) => {
       total + (item?.price - (item?.discountedPrice || item?.price)),
     0,
   );
-
+  const getRecommendedCourses = (course: Course) => {
+    return mockData.filter((item) => item.title === course.recommendedCourse);
+  };
   return (
     <div className="container">
       <div className="cart">
@@ -102,7 +87,7 @@ const Cart: React.FC<CourseCardProps> = ({ course }) => {
                   >
                     Move to Wishlist
                   </button>
-                  <p>
+                  <div>
                     {course.discountedPrice ? (
                       <div className="price">
                         <strong>Rs {course.discountedPrice}/-</strong>
@@ -110,7 +95,7 @@ const Cart: React.FC<CourseCardProps> = ({ course }) => {
                     ) : (
                       <div className="price">Rs {course.price}/-</div>
                     )}
-                  </p>
+                  </div>
                 </div>
                 <button
                   className="removeFromCart"
@@ -128,12 +113,16 @@ const Cart: React.FC<CourseCardProps> = ({ course }) => {
             {cartItems
               ?.slice(0, 2)
               ?.map((course: Course) => (
-                <CourseCard
-                  key={course.id}
-                  course={course}
-                  addToCart={handleAddToCart}
-                  addToWishlist={handleMoveToWishlist}
-                />
+                <div key={course.id}>
+                  {getRecommendedCourses(course)?.map((recommendedCourse) => (
+                    <CourseCard
+                      key={recommendedCourse.id}
+                      course={recommendedCourse}
+                      addToCart={handleAddToCart}
+                      addToWishlist={handleMoveToWishlist}
+                    />
+                  ))}
+                </div>
               ))}
           </div>
         )}
@@ -146,6 +135,7 @@ const Cart: React.FC<CourseCardProps> = ({ course }) => {
           <button
             className="total-checkout-button"
             onClick={navigatetoCheckout}
+            data-testid="checkout-button"
           ></button>
         </div>
       )}

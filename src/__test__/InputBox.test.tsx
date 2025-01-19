@@ -1,13 +1,18 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import InputBox from '../components/InputBox/InputBox';
 
 jest.useFakeTimers();
 
 describe('InputBox Component', () => {
   it('renders correctly', () => {
-    render(<InputBox onSearch={jest.fn()} />);
+    render(
+      <Router>
+        <InputBox onSearch={jest.fn()} />
+      </Router>,
+    );
 
     const inputElement = screen.getByPlaceholderText('Search here');
     expect(inputElement).toBeInTheDocument();
@@ -17,7 +22,11 @@ describe('InputBox Component', () => {
   });
 
   it('updates search input value correctly', () => {
-    render(<InputBox onSearch={jest.fn()} />);
+    render(
+      <Router>
+        <InputBox onSearch={jest.fn()} />
+      </Router>,
+    );
 
     const inputElement = screen.getByPlaceholderText('Search here');
     fireEvent.change(inputElement, { target: { value: 'React' } });
@@ -27,7 +36,11 @@ describe('InputBox Component', () => {
 
   it('calls onSearch with correct value after delay', () => {
     const mockOnSearch = jest.fn();
-    render(<InputBox onSearch={mockOnSearch} />);
+    render(
+      <Router>
+        <InputBox onSearch={mockOnSearch} />
+      </Router>,
+    );
 
     const inputElement = screen.getByPlaceholderText('Search here');
     fireEvent.change(inputElement, { target: { value: 'React' } });

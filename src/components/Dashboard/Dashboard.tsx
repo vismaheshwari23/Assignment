@@ -1,10 +1,7 @@
 import React from 'react';
 import './Dashboard.css';
 import { ReactLogo } from '../../assests';
-
-interface DashboardProps {
-  text: string;
-}
+import { DashboardProps } from '../../Utils/interface';
 
 const Dashboard: React.FC<DashboardProps> = ({ text }) => {
   return (

@@ -20,6 +20,7 @@ import CourseDetailPage from './pages/CourseDetailPage';
 import CheckoutPage from './pages/CheckoutPage';
 import { WishlistProvider } from './context/WishlistContext';
 import { ProfileProvider } from './context/ProfileContext';
+import Payment from './pages/Payment';
 
 const DynamicTitle: React.FC = () => {
   const location = useLocation();
@@ -108,6 +109,7 @@ const App: React.FC = () => {
                         </>
                       }
                     />
+                    <Route path="/payment" element={<Payment />} />
                     <Route path="*" element={<ErrorPage />} />
                   </Routes>
                 </div>

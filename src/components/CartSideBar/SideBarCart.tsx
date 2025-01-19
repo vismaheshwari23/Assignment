@@ -41,10 +41,10 @@ const CartSideBar: React.FC = () => {
         ))}
       </div>
       <div className="cart-total">
-        <p style={{ width: '130px' }}>
+        <div style={{ width: '130px' }}>
           <p>Total Cart Value </p>
           <strong>Rs {totalPrice}/-</strong>
-        </p>
+        </div>
         <button
           className="checkout-button"
           onClick={navigatetoCheckout}

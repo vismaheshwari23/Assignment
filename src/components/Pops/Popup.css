@@ -52,37 +52,53 @@
   font-size: 18px;
   cursor: pointer;
   color: #080808;
-  transition: background-color 0.3s, color 0.3s; 
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 .close-button:hover {
-  background-color: #ddd; 
+  background-color: #ddd;
   border-radius: 15%;
-  color: #ff0000; 
+  color: #ff0000;
 }
 
-/* Responsive Styles */
+.navigate-button {
+  border: none;
+  color: white;
+  background: #ff6738 0% 0% no-repeat padding-box;
+  border-radius: 4px;
+  width: 145px;
+  height: 40px;
+  opacity: 1;
+}
+.navigate-button:hover{
+  border: 1px solid black;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
+  padding: 1px;
+}
+
 @media (max-width: 768px) {
   .popup {
-    width: 90%; 
-    height: auto; 
-    padding: 15px; 
+    width: 90%;
+    height: auto;
+    padding: 15px;
   }
 
   .popup-message {
-    font-size: 16px; 
+    font-size: 16px;
   }
 
   .close-button {
-    font-size: 16px; 
+    font-size: 16px;
   }
 }
 
 @media (max-width: 480px) {
   .popup {
-    width: 95%; 
-    height: auto; 
-    padding: 10px; 
+    width: 95%;
+    height: auto;
+    padding: 10px;
   }
 
   .popup-message {
@@ -90,6 +106,6 @@
   }
 
   .close-button {
-    font-size: 14px; 
+    font-size: 14px;
   }
 }

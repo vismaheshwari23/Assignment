@@ -1,13 +1,6 @@
 import React, { createContext, useContext, ReactNode } from 'react';
 import useWishlistItem from '../Hooks/useWishlistItem.ts';
-
-interface Course {
-  id: number;
-  title: string;
-  price: number;
-  discountedPrice?: number;
-  educator: string;
-}
+import Course from '../Utils/interface.tsx';
 
 interface WishlistContextProps {
   wishlistItems: Course[];
@@ -16,7 +9,7 @@ interface WishlistContextProps {
   toggleWishlistItem: (course: Course) => void;
 }
 
-const WishlistContext = createContext<WishlistContextProps | undefined>(
+export const WishlistContext = createContext<WishlistContextProps | undefined>(
   undefined,
 );
 

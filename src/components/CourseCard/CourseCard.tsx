@@ -8,20 +8,7 @@ import {
   WishListLogoActive,
 } from '../../assests';
 import { useWishlistContext } from '../../context/WishlistContext';
-
-interface Course {
-  id: number;
-  title: string;
-  price: number;
-  discountedPrice?: number;
-  educator: string;
-}
-
-interface CourseCardProps {
-  course: Course;
-  addToCart: (course: Course) => void;
-  addToWishlist?: (course: Course) => void;
-}
+import Course, { CourseCardProps } from '../../Utils/interface';
 
 const CourseCard: React.FC<CourseCardProps> = ({ course, addToCart }) => {
   const navigate = useNavigate();
@@ -71,18 +58,18 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, addToCart }) => {
             <img src={WishListLogo} alt="add to wishlist" />
           )}
         </button>
-        <p>
+        <div>
           {course.discountedPrice ? (
-            <div className="price">
+            <p className="price">
               <strong>Rs{course.discountedPrice}/-</strong>
               <s>Rs{course.price}/-</s>
-            </div>
+            </p>
           ) : (
-            <div className="price">
+            <p className="price">
               Rs {course.price}/-<s>{'-'}</s>
-            </div>
+            </p>
           )}
-        </p>
+        </div>
       </div>
       <div
         className={`actions add-to-cart ${showAddToWishlist ? '' : 'WishlistAdd-to-cart'}`}

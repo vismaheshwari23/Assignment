@@ -8,10 +8,14 @@ import ArrowLogo from './Arrow.svg';
 import SearchIcon from './Group 35.svg';
 import GoToCheckOut from './GO TO CHECKOUT.svg';
 import PopupHeader from './Path 33.svg';
-import PopupCircle from './Path 39 (1).svg';
+import PopupCircle from './rightCircle.svg';
 import PaginationArrow from './Path 58.svg';
 import PaginationArrow2 from './Path 59.svg';
 import DeleteIcon from './noun_Delete_3715928.svg';
+import Clock from './clock.svg';
+import AddtoCart from './Group 66.svg';
+import wishlist from './wish-list.svg';
+import alreadyExist from './alreadyExist.svg';
 export {
   HashedlnLogo,
   ProfileLogo,
@@ -27,4 +31,8 @@ export {
   PaginationArrow,
   PaginationArrow2,
   DeleteIcon,
+  Clock,
+  AddtoCart,
+  wishlist,
+  alreadyExist,
 };
