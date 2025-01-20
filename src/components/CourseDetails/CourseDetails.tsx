@@ -17,7 +17,6 @@ const CourseDetails: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState<string | null>(null);
   const { addToCart, cartItems } = useCartContext();
   const { addToWishlist, wishlistItems } = useWishlistContext();
-
   const handleAddToWishlist = (course: Course) => {
     const isAlreadyInWishlist = wishlistItems?.some(
       (item) => item.id === course.id,
@@ -56,7 +55,7 @@ const CourseDetails: React.FC = () => {
   }, [CourseId]);
 
   useEffect(() => {
-    if (showData && showData.timeLeft) {
+    if (showData && showData?.timeLeft) {
       const calculateTimeLeft = () => {
         const endTime = new Date();
         endTime.setHours(24, 0, 0, 0);

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { JSX, useEffect, useState } from 'react';
 import CourseCard from '../CourseCard/CourseCard.tsx';
 import './CourseList.css';
 import mockData from '../../Utils/MockData.tsx';
@@ -35,8 +35,8 @@ const CourseList: React.FC = () => {
     setSearchTerm(query);
     const filteredCourses = (
       location.pathname === '/wishlist' ? wishlistItems : mockData
-    ).filter((course) =>
-      course.title.toLowerCase().includes(query.toLowerCase()),
+    )?.filter((course) =>
+      course?.title.toLowerCase().includes(query.toLowerCase()),
     );
     setMockCourse(filteredCourses);
   };
@@ -46,12 +46,12 @@ const CourseList: React.FC = () => {
   };
 
   const getEffectivePrice = (course: Course) => {
-    return course.discountedPrice && course.discountedPrice < course.price
-      ? course.discountedPrice
-      : course.price;
+    return course?.discountedPrice && course?.discountedPrice < course?.price
+      ? course?.discountedPrice
+      : course?.price;
   };
 
-  const sortedCourses = [...mockCourses].sort((a, b) => {
+  const sortedCourses = [...mockCourses]?.sort((a, b) => {
     const priceA = getEffectivePrice(a);
     const priceB = getEffectivePrice(b);
 
@@ -74,7 +74,7 @@ const CourseList: React.FC = () => {
   const totalPages = Math.ceil(sortedCourses.length / coursesPerPage);
 
   const handleAddToCart = (course: Course) => {
-    const isAlreadyInCart = cartItems.some((item) => item.id === course.id);
+    const isAlreadyInCart = cartItems.some((item) => item?.id === course?.id);
     if (isAlreadyInCart) {
       setPopupMessage(`Course ${course.title} already exist in the cart`);
     } else {
@@ -82,10 +82,6 @@ const CourseList: React.FC = () => {
       setPopupMessage(`Course successfully added to the cart`);
     }
     setShowPopup(true);
-  };
-
-  const addToWishlist = (course: Course) => {
-    console.log(`Course added to wishlist: ${course.title}`);
   };
 
   const handlePageChange = (pageNumber: number) => {
@@ -165,7 +161,6 @@ const CourseList: React.FC = () => {
                 key={course.id}
                 course={course}
                 addToCart={handleAddToCart}
-                addToWishlist={addToWishlist}
               />
             ))}
           <div className="pagination">{renderPaginationButtons()}</div>

@@ -50,7 +50,9 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, addToCart }) => {
         <p className="educator">{course.educator}</p>
         <button
           className={`add-to-wishlist ${showAddToWishlist ? '' : 'Visible'}`}
-          onClick={() => toggleWishlistItem(course)}
+          onClick={() => {
+            toggleWishlistItem(course);
+          }}
         >
           {isCourseInWishlist ? (
             <img src={WishListLogoActive} alt="added to wishlist" />

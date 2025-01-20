@@ -26,6 +26,7 @@ export interface CourseCardProps {
   course: Course;
   addToCart: (course: Course) => void;
   addToWishlist?: (course: Course) => void;
+  removeFromCart?: (course: Course) => void;
 }
 export interface DashboardProps {
   text: string;
@@ -38,8 +39,8 @@ export interface PopupProps {
   isVisible: boolean;
   onClose: () => void;
 }
-export interface CourseCardProps {
-  course: Course;
-  addToCart: (course: Course) => void;
-  removeFromCart: (course: Course) => void;
-}
+// export interface CourseCardProps {
+//   course: Course;
+//   addToCart: (course: Course) => void;
+//   removeFromCart?: (course: Course) => void;
+// }

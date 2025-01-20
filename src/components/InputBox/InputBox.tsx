@@ -12,7 +12,6 @@ const InputBox: React.FC<InputBoxProps> = ({ onSearch }) => {
     const handler = setTimeout(() => {
       onSearch(searchValue);
     }, 400);
-
     return () => {
       clearTimeout(handler);
     };
