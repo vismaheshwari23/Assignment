@@ -112,23 +112,23 @@ const CourseDetails: React.FC = () => {
             <div className="course-additional-details">
               <p className="heading">Course Details</p>
               <p>
-                {showData?.courseDetails ||
+                {showData?.courseDetails.slice(0, 25) ||
                   'Responsive Design Course XYZ How to design responsive templates'}
               </p>
               <p>
-                {showData?.courseDetails ||
+                {showData?.courseDetails.slice(0, 25) ||
                   'Responsive Design Course XYZ How to design responsive templates'}
               </p>
               <p>
-                {showData?.courseDetails ||
+                {showData?.courseDetails.slice(0, 25) ||
                   'Responsive Design Course XYZ How to design responsive templates'}
               </p>
               <p>
-                {showData?.courseDetails ||
+                {showData?.courseDetails.slice(0, 25) ||
                   'Responsive Design Course XYZ How to design responsive templates'}
               </p>
               <p>
-                {showData?.courseDetails ||
+                {showData?.courseDetails.slice(0, 25) ||
                   'Responsive Design Course XYZ How to design responsive templates'}
               </p>
             </div>
@@ -163,22 +163,12 @@ const CourseDetails: React.FC = () => {
             </div>
           </div>
 
-          <div
-            style={{
-              width: '674px',
-              height: '332px',
-              position: 'absolute',
-              top: '328px',
-              left: '1106px',
-              boxSizing: 'border-box',
-              overflow: 'hidden',
-            }}
-          >
+          <div className="video-frame">
             <iframe
               width="100%"
               height="90%"
               // src="https://www.youtube.com/embed/gvkqT_Uoahw?autoplay=1&si=K6ChxWb_JXNba99t"
-              src={showData?.videoUrl}
+              src={`${showData?.videoUrl}?autoplay=1&mute=1`}
               allow="autoplay"
               frameBorder="0"
               title="Course Video"

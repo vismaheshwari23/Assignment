@@ -14,7 +14,6 @@
   justify-content: space-between;
   box-sizing: border-box;
   margin-bottom: 16px !important;
-  padding-left: 19px;
 }
 
 .course-card .course-info {
@@ -22,8 +21,13 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  gap: 2px 0px;
+  padding-left: 16px;
+}
+.logo-div {
+  width: 79px;
+  height: 70px;
+  background: #f2f2f2 0% 0% no-repeat padding-box;
+  opacity: 1;
 }
 
 .course-card .course-info p {
@@ -32,16 +36,14 @@
 
 .course-title {
   display: flex;
-  flex-direction: row;
+  flex-direction: row !important;
   justify-content: start !important;
   align-items: center;
 }
 .course-title-information {
-  padding-left: 20px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 13px;
+  flex-direction: column !important;
+  justify-content: start;
 }
 
 .course-title-button {
@@ -116,13 +118,6 @@
   align-items: center;
 }
 
-.course-card .logo-div {
-  width: 79px;
-  height: 70px;
-  background: #f2f2f2 0% 0% no-repeat padding-box;
-  opacity: 1;
-}
-
 .navigate-arrow {
   background: transparent !important;
   opacity: 1;
@@ -131,21 +126,19 @@
 .removeWishlist {
   background-color: transparent !important;
 }
-
 .price {
-  width: 80px;
   display: flex;
   justify-content: start !important;
-  align-items: center !important;
-  gap: 5px;
+  gap: 4px;
   text-align: left;
+  padding-right: 40px;
   letter-spacing: 0px;
   color: #080808;
   opacity: 1;
 }
 
 .Visible {
-  visibility: hidden;
+  display: none;
 }
 
 .cartWidth {
@@ -157,21 +150,3 @@
   align-items: center;
 }
 
-.price-container {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.cartWidth {
-  max-width: 1210.5px !important;
-}
-
-/* @media (max-width: 1200px) {
-  .course-card .course-info .course-title .course-title-information {
-    display: flex;
-    flex-direction: row !important;
-    justify-content: space-between;
-    align-items: center;
-  }
-} */

@@ -200,6 +200,9 @@
 .course-card .add-to-wishlist:hover {
   color: #ff6738;
 }
+.course-title-logo-div {
+  padding-left: 16px;
+}
 
 .course-card .course-title-logo-div .logo-div {
   width: 79px;
@@ -227,7 +230,7 @@
   text-align: left;
   font: normal normal bold 20px/24px Montserrat !important;
   width: 100%;
-  max-width: 90px ;
+  max-width: 90px;
 }
 
 @media (max-width: 1200px) {

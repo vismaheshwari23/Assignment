@@ -38,16 +38,14 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, addToCart }) => {
         className={`course-card  ${location.pathname === '/cart' ? 'cartWidth' : ''}`}
       >
         <div className="course-info">
-          <div
-            className={`course-title ${showAddToWishlist ? 'WishlistTitle' : ''}`}
-          >
-            <div className="logo-div"></div>
+          <div className="logo-div"></div>
+          <div className="course-title">
             <div className="course-title-information">
-              {/* <h5>{course.title}</h5>
+              <h5>{course.title}</h5>
               <div className="course-title-button">
                 <button>React</button>
                 <button>React</button>
-              </div> */}
+              </div>
             </div>
           </div>
           <p className="educator">{course.educator}</p>
@@ -76,9 +74,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, addToCart }) => {
             )}
           </div>
         </div>
-        <div
-          className={`actions add-to-cart ${showAddToWishlist ? '' : 'WishlistAdd-to-cart'}`}
-        >
+        <div className="actions add-to-cart">
           <button onClick={() => addToCart(course)}>ADD TO CART</button>
         </div>
         {location.pathname !== '/cart' && !showAddToWishlist && (
