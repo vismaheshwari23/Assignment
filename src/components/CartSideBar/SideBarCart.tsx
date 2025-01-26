@@ -41,7 +41,7 @@ const CartSideBar: React.FC = () => {
         ))}
       </div>
       <div className="cart-total">
-        <div style={{ width: '130px' }}>
+        <div>
           <p>Total Cart Value </p>
           <strong>Rs {totalPrice}/-</strong>
         </div>

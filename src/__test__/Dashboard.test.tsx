@@ -10,7 +10,7 @@ describe('Dashboard Component', () => {
     render(
       <Router>
         <Dashboard text={text} />
-      </Router>
+      </Router>,
     );
     const dashboardText = screen.getByText(text);
     expect(dashboardText).toBeInTheDocument();
@@ -20,7 +20,7 @@ describe('Dashboard Component', () => {
     render(
       <Router>
         <Dashboard text="Sample Text" />
-      </Router>
+      </Router>,
     );
     const logo = screen.getByAltText('react-logo');
     expect(logo).toBeInTheDocument();

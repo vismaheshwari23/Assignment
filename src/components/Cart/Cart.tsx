@@ -56,7 +56,7 @@ const Cart: React.FC<CourseCardProps> = ({ course }) => {
     return mockData.filter((item) => item.title === course.recommendedCourse);
   };
   return (
-    <div className="container">
+    <div className="cart-container">
       <div className="cart">
         <p className="cart-details">
           {cartItems.length === 0
@@ -64,38 +64,30 @@ const Cart: React.FC<CourseCardProps> = ({ course }) => {
             : `${cartItems.length} Courses in Cart`}
         </p>
         {cartItems?.map((course: Course) => (
-          <div key={course.id} className="cart-content">
-            <div className="course-card">
-              <div style={{ display: 'flex' }}>
-                <div className="logo-div"></div>
-                <div className="course-title">
-                  <h2>{course.title}</h2>
-                  <p className="Educator">{course.educator}</p>
-                </div>
+          <div className="course-card" key={course.id}>
+            <div className="course-title-logo-div">
+              <div className="logo-div"></div>
+              <div className="course-title">
+                <h2>{course.title}</h2>
+                <p className="Educator">{course.educator}</p>
               </div>
-              <div className="course-info">
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}
+            </div>
+            <div>
+              <div className="course-info-box">
+                <button
+                  className="add-to-wishlist"
+                  onClick={() => handleMoveToWishlist(course)}
                 >
-                  <button
-                    className="add-to-wishlist"
-                    onClick={() => handleMoveToWishlist(course)}
-                  >
-                    Move to Wishlist
-                  </button>
-                  <div>
-                    {course.discountedPrice ? (
-                      <div className="price">
-                        <strong>Rs {course.discountedPrice}/-</strong>
-                      </div>
-                    ) : (
-                      <div className="price">Rs {course.price}/-</div>
-                    )}
-                  </div>
+                  Move to Wishlist
+                </button>
+                <div>
+                  {course.discountedPrice ? (
+                    <div className="price">
+                      <strong>Rs {course.discountedPrice}/-</strong>
+                    </div>
+                  ) : (
+                    <div className="price">Rs {course.price}/-</div>
+                  )}
                 </div>
                 <button
                   className="removeFromCart"

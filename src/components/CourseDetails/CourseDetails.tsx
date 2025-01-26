@@ -177,7 +177,8 @@ const CourseDetails: React.FC = () => {
             <iframe
               width="100%"
               height="90%"
-              src="https://www.youtube.com/embed/gvkqT_Uoahw?autoplay=1&si=K6ChxWb_JXNba99t"
+              // src="https://www.youtube.com/embed/gvkqT_Uoahw?autoplay=1&si=K6ChxWb_JXNba99t"
+              src={showData?.videoUrl}
               allow="autoplay"
               frameBorder="0"
               title="Course Video"

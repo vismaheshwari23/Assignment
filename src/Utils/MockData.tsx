@@ -9,7 +9,7 @@ const mockData = [
       'Learn the basics of React, including components, state, and props. This course will help you build a strong foundation in React.',
     timeLeft: '10 days',
     recommendedCourse: 'Advanced React',
-    videoUrl: 'https://example.com/react-basics-video',
+    videoUrl: 'https://www.youtube.com/embed/Y6aYx_KKM7A?si=fqrzCNib0G3YFow8',
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const mockData = [
       'Dive deeper into React with hooks, context, and advanced patterns. Enhance your React skills to build more complex applications.',
     timeLeft: '15 days',
     recommendedCourse: 'React and Redux',
-    videoUrl: 'https://example.com/advanced-react-video',
+    videoUrl: 'https://www.youtube.com/embed/qTDnwmMF5q8?si=j_O9UhJzLH72c5PH',
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ const mockData = [
       'Integrate Redux with React for state management in complex applications. Learn how to manage state effectively in large-scale applications.',
     timeLeft: '12 days',
     recommendedCourse: 'Next.js Mastery',
-    videoUrl: 'https://example.com/react-redux-video',
+    videoUrl: 'https://www.youtube.com/embed/qTDnwmMF5q8?si=j_O9UhJzLH72c5PH',
   },
   {
     id: 4,
@@ -44,7 +44,7 @@ const mockData = [
       'Get started with Vue.js and learn how to build dynamic web applications. This course covers the core concepts of Vue.js.',
     timeLeft: '8 days',
     recommendedCourse: 'Nuxt.js Deep Dive',
-    videoUrl: 'https://example.com/vue-fundamentals-video',
+    videoUrl: 'https://www.youtube.com/embed/nhBVL41-_Cw?si=QjVC3-R0DzjpgLn-',
   },
   {
     id: 5,
@@ -55,7 +55,7 @@ const mockData = [
       'An introduction to Angular, covering the basics of components and services. Build your first Angular application with ease.',
     timeLeft: '20 days',
     recommendedCourse: 'Advanced Angular',
-    videoUrl: 'https://example.com/angular-beginners-video',
+    videoUrl: 'https://www.youtube.com/embed/Ata9cSC2WpM',
   },
   {
     id: 6,
@@ -67,7 +67,7 @@ const mockData = [
       'Explore advanced Angular topics like RxJS, NgRx, and performance optimization. Take your Angular skills to the next level.',
     timeLeft: '18 days',
     recommendedCourse: 'Angular for Beginners',
-    videoUrl: 'https://example.com/advanced-angular-video',
+    videoUrl: 'https://www.youtube.com/embed/Ata9cSC2WpM',
   },
   {
     id: 7,
@@ -78,7 +78,7 @@ const mockData = [
       'Learn the essentials of Svelte, a modern JavaScript framework for building UIs. This course will guide you through the basics of Svelte.',
     timeLeft: '5 days',
     recommendedCourse: 'JavaScript Essentials',
-    videoUrl: 'https://example.com/svelte-essentials-video',
+    videoUrl: 'https://www.youtube.com/embed/H1eEFfAkIik',
   },
   {
     id: 8,
@@ -90,7 +90,8 @@ const mockData = [
       'Master Next.js for server-side rendering and static site generation. Learn how to build fast and scalable web applications with Next.js.',
     timeLeft: '25 days',
     recommendedCourse: 'React Basics',
-    videoUrl: 'https://example.com/nextjs-mastery-video',
+    videoUrl:
+      'https://www.youtube.com/watch?v=wm5gMKuwSYk&list=PL6QREj8te1P7gixBDSU8JLvQndTEEX3c3',
   },
   {
     id: 9,
@@ -101,7 +102,8 @@ const mockData = [
       'Deep dive into Nuxt.js for building powerful Vue.js applications. Understand the advanced features of Nuxt.js for production-ready apps.',
     timeLeft: '30 days',
     recommendedCourse: 'Vue.js Fundamentals',
-    videoUrl: 'https://example.com/nuxtjs-deep-dive-video',
+    videoUrl:
+      'https://www.youtube.com/watch?v=wm5gMKuwSYk&list=PL6QREj8te1P7gixBDSU8JLvQndTEEX3c3',
   },
   {
     id: 10,
@@ -113,7 +115,8 @@ const mockData = [
       'Get started with React Native to build mobile applications for iOS and Android. Learn the fundamentals of React Native development.',
     timeLeft: '14 days',
     recommendedCourse: 'React Basics',
-    videoUrl: 'https://example.com/react-native-basics-video',
+    videoUrl:
+      'https://www.youtube.com/watch?v=hzzCveeczSQ&list=PLC3y8-rFHvwhiQJD1di4eRVN30WWCXkg1',
   },
   {
     id: 11,
@@ -124,7 +127,7 @@ const mockData = [
       'Learn the essentials of JavaScript, the language of the web. This course covers the core concepts of JavaScript programming.',
     timeLeft: '7 days',
     recommendedCourse: 'TypeScript in Depth',
-    videoUrl: 'https://example.com/javascript-essentials-video',
+    videoUrl: 'https://www.youtube.com/watch?v=bC07ItX8x_Y',
   },
   {
     id: 12,
@@ -136,7 +139,7 @@ const mockData = [
       'Explore TypeScript and how it enhances JavaScript development. Learn how to use TypeScript for building robust applications.',
     timeLeft: '22 days',
     recommendedCourse: 'JavaScript Essentials',
-    videoUrl: 'https://example.com/typescript-depth-video',
+    videoUrl: 'https://www.youtube.com/watch?v=30LWjhZzg50',
   },
   {
     id: 13,
@@ -147,7 +150,7 @@ const mockData = [
       'Learn the fundamentals of Node.js for building server-side applications. This course covers the basics of Node.js development.',
     timeLeft: '9 days',
     recommendedCourse: 'Express.js Advanced',
-    videoUrl: 'https://example.com/nodejs-fundamentals-video',
+    videoUrl: 'https://www.youtube.com/watch?v=ENrzD9HAZK4',
   },
   {
     id: 14,
@@ -159,7 +162,7 @@ const mockData = [
       'Advanced topics in Express.js for building robust web applications. Learn how to create scalable and maintainable Express.js apps.',
     timeLeft: '11 days',
     recommendedCourse: 'Node.js Fundamentals',
-    videoUrl: 'https://example.com/expressjs-advanced-video',
+    videoUrl: 'https://www.youtube.com/watch?v=SccSCuHhOw0',
   },
   {
     id: 15,
@@ -170,7 +173,7 @@ const mockData = [
       'Introduction to GraphQL for building flexible APIs. Understand the core concepts of GraphQL and how to use it in your projects.',
     timeLeft: '13 days',
     recommendedCourse: 'Apollo Client Mastery',
-    videoUrl: 'https://example.com/graphql-basics-video',
+    videoUrl: 'https://www.youtube.com/watch?v=Zg4XIpnLWQg',
   },
   {
     id: 16,
@@ -182,7 +185,8 @@ const mockData = [
       'Master Apollo Client for managing GraphQL data in your applications. Learn how to efficiently handle GraphQL queries and mutations.',
     timeLeft: '17 days',
     recommendedCourse: 'GraphQL Basics',
-    videoUrl: 'https://example.com/apollo-client-mastery-video',
+    videoUrl:
+      'https://www.youtube.com/watch?v=xMCnDesBggM&list=PL4cUxeGkcC9gUxtblNUahcsg0WLxmrK_y',
   },
 ];
 

@@ -33,66 +33,70 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, addToCart }) => {
   }, [location.pathname, wishlistItems, toggleWishlistItem]);
 
   return (
-    <div
-      className={`course-card  ${location.pathname === '/cart' ? 'cartWidth' : ''}`}
-    >
-      <div className="course-info">
-        <div className="logo-div"></div>
-        <div
-          className={`course-title ${showAddToWishlist ? 'WishlistTitle' : ''}`}
-        >
-          <h2>{course.title}</h2>
-          <div className="course-title-button">
-            <button>React</button>
-            <button>React</button>
+    <>
+      <div
+        className={`course-card  ${location.pathname === '/cart' ? 'cartWidth' : ''}`}
+      >
+        <div className="course-info">
+          <div
+            className={`course-title ${showAddToWishlist ? 'WishlistTitle' : ''}`}
+          >
+            <div className="logo-div"></div>
+            <div className="course-title-information">
+              {/* <h5>{course.title}</h5>
+              <div className="course-title-button">
+                <button>React</button>
+                <button>React</button>
+              </div> */}
+            </div>
+          </div>
+          <p className="educator">{course.educator}</p>
+          <button
+            className={`add-to-wishlist ${showAddToWishlist ? '' : 'Visible'}`}
+            onClick={() => {
+              toggleWishlistItem(course);
+            }}
+          >
+            {isCourseInWishlist ? (
+              <img src={WishListLogoActive} alt="added to wishlist" />
+            ) : (
+              <img src={WishListLogo} alt="add to wishlist" />
+            )}
+          </button>
+          <div>
+            {course.discountedPrice ? (
+              <p className="price">
+                <strong>Rs{course.discountedPrice}/-</strong>
+                <s>Rs{course.price}/-</s>
+              </p>
+            ) : (
+              <p className="price">
+                Rs {course.price}/-<s>{'-'}</s>
+              </p>
+            )}
           </div>
         </div>
-        <p className="educator">{course.educator}</p>
-        <button
-          className={`add-to-wishlist ${showAddToWishlist ? '' : 'Visible'}`}
-          onClick={() => {
-            toggleWishlistItem(course);
-          }}
+        <div
+          className={`actions add-to-cart ${showAddToWishlist ? '' : 'WishlistAdd-to-cart'}`}
         >
-          {isCourseInWishlist ? (
-            <img src={WishListLogoActive} alt="added to wishlist" />
-          ) : (
-            <img src={WishListLogo} alt="add to wishlist" />
-          )}
-        </button>
-        <div>
-          {course.discountedPrice ? (
-            <p className="price">
-              <strong>Rs{course.discountedPrice}/-</strong>
-              <s>Rs{course.price}/-</s>
-            </p>
-          ) : (
-            <p className="price">
-              Rs {course.price}/-<s>{'-'}</s>
-            </p>
-          )}
+          <button onClick={() => addToCart(course)}>ADD TO CART</button>
         </div>
-      </div>
-      <div
-        className={`actions add-to-cart ${showAddToWishlist ? '' : 'WishlistAdd-to-cart'}`}
-      >
-        <button onClick={() => addToCart(course)}>ADD TO CART</button>
-      </div>
-      {location.pathname !== '/cart' && !showAddToWishlist && (
+        {location.pathname !== '/cart' && !showAddToWishlist && (
+          <button
+            className="removeWishlist"
+            onClick={() => toggleWishlistItem(course)}
+          >
+            <img src={DeleteIcon} alt="remove-wishlist" />
+          </button>
+        )}
         <button
-          className="removeWishlist"
-          onClick={() => toggleWishlistItem(course)}
+          className="navigate-arrow"
+          onClick={() => navigateToCourseDetails(course.id)}
         >
-          <img src={DeleteIcon} alt="remove-wishlist" />
+          <img src={ArrowLogo} alt="navigate" />
         </button>
-      )}
-      <button
-        className="navigate-arrow"
-        onClick={() => navigateToCourseDetails(course.id)}
-      >
-        <img src={ArrowLogo} alt="navigate" />
-      </button>
-    </div>
+      </div>
+    </>
   );
 };
 

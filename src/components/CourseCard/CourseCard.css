@@ -11,60 +11,63 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   box-sizing: border-box;
-  margin-bottom: 0.4px !important;
+  margin-bottom: 16px !important;
+  padding-left: 19px;
 }
 
 .course-card .course-info {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 4px !important;
+  justify-content: space-between;
+  width: 100%;
+  gap: 2px 0px;
 }
 
 .course-card .course-info p {
   font-weight: bold;
 }
 
-.course-card h2 {
-  font-size: 1em;
-  margin: 0 16px 0 0;
-}
-
 .course-title {
   display: flex;
+  flex-direction: row;
+  justify-content: start !important;
+  align-items: center;
+}
+.course-title-information {
+  padding-left: 20px;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
-  /* padding-left: 5px; */
-  width: 335px !important;
+  justify-content: space-between;
+  gap: 13px;
 }
 
 .course-title-button {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 4px !important;
+  align-items: start;
+  justify-content: center;
+  margin-top: -20px;
 }
+
 .course-title-button button {
-  width: 78px;
-  height: 21px;
-  margin-top: 12px;
+  max-width: 78px;
+  max-height: 21px;
+  padding-top: 12px;
 }
 
 .course-card .educator {
+  width: 100px;
   font-size: 0.7em;
   font-weight: 100;
-  margin: 0 20px;
   color: #00000029;
-  width: 117px !important;
-  /* margin-left: -120px; */
+  max-width: 117px !important;
   text-align: left;
   font: normal normal 300 16px/19px Montserrat;
   letter-spacing: 0px;
   opacity: 1;
+  margin-right: 16px;
 }
 
 .course-card p {
@@ -108,8 +111,9 @@
 
 .add-to-wishlist {
   background: transparent !important;
-  /* margin-right: 196px !important; */
   opacity: 1;
+  display: flex;
+  align-items: center;
 }
 
 .course-card .logo-div {
@@ -129,23 +133,45 @@
 }
 
 .price {
+  width: 80px;
   display: flex;
   justify-content: start !important;
   align-items: center !important;
   gap: 5px;
   text-align: left;
-  font: normal normal bold 20px/24px Montserrat !important;
   letter-spacing: 0px;
   color: #080808;
   opacity: 1;
 }
+
 .Visible {
   visibility: hidden;
 }
-/* .WishlistTitle {
-}
-.WishlistAdd-to-cart {
-} */
+
 .cartWidth {
-  width: 1210.5px !important;
+  max-width: 1210.5px !important;
 }
+
+.educator-wishlist {
+  display: flex;
+  align-items: center;
+}
+
+.price-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cartWidth {
+  max-width: 1210.5px !important;
+}
+
+/* @media (max-width: 1200px) {
+  .course-card .course-info .course-title .course-title-information {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: center;
+  }
+} */

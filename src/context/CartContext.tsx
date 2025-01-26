@@ -17,7 +17,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart,  setCartItems}}
+      value={{ cartItems, addToCart, removeFromCart, setCartItems }}
     >
       {children}
     </CartContext.Provider>

@@ -1,17 +1,18 @@
-.container {
+.cart-container {
   display: flex;
   /* height: 100%; */
   /* max-height: 805px; */
-  justify-content: space-between !important;
-  flex-direction: row !important;
-  align-items: start !important;
-  width: 1640px;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: start;
+  max-width: 1640px;
   margin-left: 140px;
   margin-right: 140px;
 }
 
 .total-box {
-  width: 398px;
+  width: 100%;
+  max-width: 398px;
   height: 216px;
   background-color: darkgoldenrod;
   box-sizing: border-box;
@@ -21,16 +22,18 @@
   padding: 10px;
   opacity: 1;
   margin-top: 91px;
+  margin-left: 16px;
 }
 
 .cart {
-  width: 1242px;
+  width: 100%;
+  max-width: 1242px;
   height: 100%;
   padding-top: 22px;
 }
 
 .cart-details {
-  margin-left: 17px;
+  padding-left: 17px;
   padding-bottom: 5px;
   text-align: left;
   font: normal normal 600 20px/24px Montserrat;
@@ -39,16 +42,13 @@
   opacity: 1;
 }
 
-.cart-content {
-  width: 1226px;
-  height: 100px;
-}
-
 .recommended-course {
-  margin-top: 25px;
+  padding-top: 25px;
   margin-bottom: 25px;
-  width: 1242px;
-  height: 333px;
+  width: 100%;
+  max-width: 1242px;
+  height: 100%;
+  max-height: 333px;
   box-sizing: border-box;
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #e0e0e0;
@@ -92,7 +92,8 @@
   background: transparent url('../../assests//Group\ 65.svg') 0% 0% no-repeat
     padding-box;
   opacity: 1;
-  width: 366px;
+  width: 100%;
+  max-width: 366px;
   height: 51px;
   object-fit: cover;
 }
@@ -100,8 +101,8 @@
 .total-checkout-button:hover {
   border: 1px solid black;
   border-radius: 5px;
-  padding: 1px 10px; 
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
+  padding: 1px 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .course-card {
@@ -113,9 +114,6 @@
   border: 1px solid #f4f4f4;
   border-radius: 0px 0px 4px 4px;
   opacity: 1;
-  padding: 16px;
-  margin: 16px auto;
-  /* Add margin here */
   font-family: 'Montserrat', sans-serif;
   display: flex;
   flex-direction: row;
@@ -124,16 +122,22 @@
   box-sizing: border-box;
 }
 
-.course-card .course-info {
+.course-info-box {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between !important;
+  flex-direction: row !important;
+  padding-right: 25px;
+  justify-content: center;
   align-items: center;
   text-align: center;
 }
 
 .course-card .course-info p {
   font-weight: bold;
+}
+.course-title-logo-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .course-card h2 {
@@ -146,7 +150,7 @@
   flex-direction: column !important;
   align-items: start !important;
   justify-content: center !important;
-  margin-left: 18px;
+  padding-left: 18px;
 }
 
 .Educator {
@@ -182,13 +186,6 @@
   white-space: nowrap;
 }
 
-.course-card .add-to-cart button {
-  padding: 8px 16px;
-  font-size: 0.8em;
-  background-color: #ff6738;
-  white-space: nowrap;
-}
-
 .course-card button:hover {
   background-color: #0056b3;
 }
@@ -199,18 +196,16 @@
   letter-spacing: 0px;
   color: #1873ce;
   opacity: 1;
-  margin-right: 44px;
 }
 .course-card .add-to-wishlist:hover {
   color: #ff6738;
 }
 
-.course-card .logo-div {
+.course-card .course-title-logo-div .logo-div {
   width: 79px;
   height: 70px;
   background: #f2f2f2 0% 0% no-repeat padding-box;
   opacity: 1;
-  margin-bottom: -1px !important;
 }
 
 .navigate-arrow {
@@ -220,16 +215,100 @@
 
 .removeFromCart {
   background-color: transparent !important;
-  width: 28px;
+  width: 100%;
+  max-width: 28px;
   height: 31px;
-  margin-left: -22px;
-  margin-bottom: 3px;
 }
 
 .price {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90px;
-  margin-left: 10px;
+  text-align: left;
+  font: normal normal bold 20px/24px Montserrat !important;
+  width: 100%;
+  max-width: 90px ;
+}
+
+@media (max-width: 1200px) {
+  .cart-container {
+    flex-direction: column !important;
+    align-items: center;
+  }
+
+  .total-box {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+  .course-card {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+  }
+
+  .course-info-box {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 0;
+  }
+
+  .course-title-logo-div {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-container {
+    padding: 0 10px;
+  }
+
+  .cart-details {
+    font-size: 18px;
+  }
+
+  .course-card h2 {
+    font-size: 0.9em;
+  }
+
+  .course-card p {
+    font-size: 0.7em;
+  }
+
+  .course-card button {
+    font-size: 0.7em;
+    padding: 4px 8px;
+  }
+
+  .total-price {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart-container {
+    padding: 0 5px;
+  }
+
+  .cart-details {
+    font-size: 16px;
+  }
+
+  .course-card h2 {
+    font-size: 0.8em;
+  }
+
+  .course-card p {
+    font-size: 0.6em;
+  }
+
+  .course-card button {
+    font-size: 0.6em;
+    padding: 3px 6px;
+  }
+
+  .total-price {
+    font-size: 20px;
+  }
 }

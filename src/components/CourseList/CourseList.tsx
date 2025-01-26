@@ -1,15 +1,16 @@
-import React, { JSX, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CourseCard from '../CourseCard/CourseCard.tsx';
 import './CourseList.css';
 import mockData from '../../Utils/MockData.tsx';
 import Popup from '../Pops/Popup.tsx';
 import CartSideBar from '../CartSideBar/SideBarCart.tsx';
-import { PaginationArrow, PaginationArrow2 } from '../../assests/index.js';
 import { useCartContext } from '../../context/CartContext.tsx';
 import { useLocation } from 'react-router-dom';
 import { useWishlistContext } from '../../context/WishlistContext.tsx';
 import InputBox from '../InputBox/InputBox.tsx';
 import Course from '../../Utils/interface.tsx';
+import Pagination from '../Pagination/Pagination.tsx';
+import SortSelect from '../SortSelect/SortSelect.tsx';
 
 const CourseList: React.FC = () => {
   const [mockCourses, setMockCourse] = useState<Course[]>(mockData);
@@ -92,40 +93,6 @@ const CourseList: React.FC = () => {
     setShowPopup(false);
   };
 
-  const renderPaginationButtons = () => {
-    const buttons: JSX.Element[] = [];
-    const startPage = Math.max(1, currentPage - 1);
-    const endPage = Math.min(totalPages, startPage + 1);
-
-    if (currentPage > 1) {
-      buttons.push(
-        <button key="prev" onClick={() => handlePageChange(currentPage - 1)}>
-          <img src={PaginationArrow2} alt="previous" />
-        </button>,
-      );
-    }
-    for (let i = startPage; i <= endPage; i++) {
-      buttons.push(
-        <button
-          key={i}
-          onClick={() => handlePageChange(i)}
-          className={currentPage === i ? 'active' : ''}
-        >
-          {i}
-        </button>,
-      );
-    }
-
-    if (currentPage < totalPages) {
-      buttons.push(
-        <button key="next" onClick={() => handlePageChange(currentPage + 1)}>
-          <img src={PaginationArrow} alt="next" />
-        </button>,
-      );
-    }
-    return buttons;
-  };
-
   return (
     <div className="course-list-container">
       <div className="course-list-wrapper">
@@ -136,15 +103,10 @@ const CourseList: React.FC = () => {
                 ? 'All Courses'
                 : 'My Wishlist'}
             </h3>
-            <select
-              name="CoursePrice"
-              className="course-select-box"
-              onChange={handleSortChange}
-            >
-              <option value="">Course Price</option>
-              <option value="low_to_high">Low to High</option>
-              <option value="high_to_low">High to Low</option>
-            </select>
+            <SortSelect
+              sortOption={sortOption}
+              onSortChange={handleSortChange}
+            />
           </div>
           {location.pathname === '/wishlist' && wishlistItems.length === 0 && (
             <p className="wishlist-item">No course in the wishlist.</p>
@@ -163,7 +125,11 @@ const CourseList: React.FC = () => {
                 addToCart={handleAddToCart}
               />
             ))}
-          <div className="pagination">{renderPaginationButtons()}</div>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
         </div>
         <Popup
           message={popupMessage}

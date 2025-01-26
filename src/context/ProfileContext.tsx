@@ -7,7 +7,6 @@ import React, {
 } from 'react';
 import { Profile } from '../Utils/interface';
 
-
 interface ProfileContextProps {
   profileSave: Profile;
   setProfileSave: React.Dispatch<React.SetStateAction<Profile>>;

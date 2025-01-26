@@ -4,7 +4,6 @@ import '@testing-library/jest-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Navbar from '../components/Navbar/Navbar';
 
-
 jest.mock('../context/CartContext', () => ({
   useCartContext: () => ({
     cartItems: [],
@@ -22,7 +21,7 @@ describe('Navbar Component', () => {
     render(
       <Router>
         <Navbar />
-      </Router>
+      </Router>,
     );
     const logo = screen.getByAltText('Hashedln-logo');
     expect(logo).toBeInTheDocument();
@@ -32,7 +31,7 @@ describe('Navbar Component', () => {
     render(
       <Router>
         <Navbar />
-      </Router>
+      </Router>,
     );
     const coursesLink = screen.getByText('Courses');
     expect(coursesLink).toBeInTheDocument();
@@ -42,7 +41,7 @@ describe('Navbar Component', () => {
     render(
       <Router>
         <Navbar />
-      </Router>
+      </Router>,
     );
     const wishlistLink = screen.getByText('My Wishlist');
     expect(wishlistLink).toBeInTheDocument();
@@ -52,7 +51,7 @@ describe('Navbar Component', () => {
     render(
       <Router>
         <Navbar />
-      </Router>
+      </Router>,
     );
     const cartIcon = screen.getByAltText('shopingCart');
     expect(cartIcon).toBeInTheDocument();
@@ -62,7 +61,7 @@ describe('Navbar Component', () => {
     render(
       <Router>
         <Navbar />
-      </Router>
+      </Router>,
     );
     const profileIcon = screen.getByAltText('ProfileLogo');
     expect(profileIcon).toBeInTheDocument();

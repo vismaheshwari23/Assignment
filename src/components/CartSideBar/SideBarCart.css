@@ -1,9 +1,8 @@
 .cart-sidebar {
-  width: 100%;
-  max-width: 398px;
+  /* width: 100%; */
+  max-width: 397.63px;
   height: 100%;
   max-height: 680px;
-  margin-left: 16px;
   margin-top: 24px;
   padding: 16px;
   background: #ffffff 0% 0% no-repeat padding-box;
@@ -55,7 +54,8 @@
 }
 
 .item-div {
-  width: 79px;
+  width: 100%;
+  max-width: 79px;
   height: 70px;
   background: #f2f2f2;
   opacity: 1;
@@ -114,8 +114,9 @@
 
 .cart-total .checkout-button {
   opacity: 1;
-  width: 151px !important;
-  height: 19px !important;
+  width: 100%;
+  max-width: 151px !important;
+  max-height: 19px !important;
   color: #ff6738;
   border: none;
   cursor: pointer;
